@@ -1,4 +1,5 @@
 
+import 'package:clim_assist/screens/hourlyWeather.dart';
 import 'package:clim_assist/screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,9 @@ class MyApp extends StatelessWidget {
           colorScheme:
               ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
         ),
-        home: SplashScreen(),
+        home: 
+        // SplashScreen(),
+        hourlyWeather()
         // routes: {
         //   WeeklyScreen.routeName: (myCtx) => WeeklyScreen(),
         //   HourlyScreen.routeName: (myCtx) => HourlyScreen(),

@@ -5,10 +5,10 @@ import '../constants.dart';
 import '../utils/utils.dart';
 import '../provider/weatherProvider.dart';
 
-class HourlyScreen extends StatelessWidget {
-  static const routeName = '/hourlyScreen';
+class hourlyWeather extends StatelessWidget {
+  static const routeName = '/hourlyWeather';
 
-  Widget dailyWidget(dynamic weather, BuildContext context) {
+  Widget hourlyWidget(dynamic weather, BuildContext context) {
     final time = weather.date;
     final hours = DateFormat.Hm().format(time);
     return Container(
@@ -66,7 +66,7 @@ class HourlyScreen extends StatelessWidget {
           child: ListView(
             physics: BouncingScrollPhysics(),
             children: weatherData.hourly24Weather
-                .map((item) => dailyWidget(item, context))
+                .map((item) => hourlyWidget(item, context))
                 .toList(),
           ),
         ),
