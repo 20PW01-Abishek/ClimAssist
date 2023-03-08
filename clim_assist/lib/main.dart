@@ -1,4 +1,4 @@
-import 'package:clim_assist/splash_screen.dart';
+import 'package:clim_assist/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
