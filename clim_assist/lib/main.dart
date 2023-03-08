@@ -1,4 +1,5 @@
 import 'package:clim_assist/screens/splash_screen.dart';
+import 'package:clim_assist/widgets/today_weather_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen()
+      home: 
+      SplashScreen()
+      // todayWeatherWidget()
     );
   }
 }
