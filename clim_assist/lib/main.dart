@@ -1,5 +1,5 @@
 
-import 'package:clim_assist/screens/splash_screen.dart';
+import 'package:clim_assist/screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

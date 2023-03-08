@@ -4,7 +4,7 @@ import 'package:clim_assist/provider/weatherProvider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 
-class todayWeatherWidget extends StatelessWidget {
+class weatherDetail extends StatelessWidget {
   Widget _gridWeatherBuilder(String header, String body, IconData icon) {
     return Material(
       elevation: 5,
