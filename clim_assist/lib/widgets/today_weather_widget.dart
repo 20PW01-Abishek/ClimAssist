@@ -1,36 +1,96 @@
+import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:clim_assist/provider/weatherProvider.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
 
-class todayWeatherWidget extends StatefulWidget {
-  // const todayWeatherWidget({super.key});
+class todayWeatherWidget extends StatelessWidget {
+  Widget _gridWeatherBuilder(String header, String body, IconData icon) {
+    return Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(15),
+      color: ColorConstants.primaryColor,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(
+              icon,
+              color: ColorConstants.secondaryColor, 
+              size: 35,
+            ),
+            const SizedBox(width: 15.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FittedBox(
+                  child: Text(
+                    header,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                FittedBox(
+                  child: Text(
+                    body,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
-  @override
-  State<todayWeatherWidget> createState() => _todayWeatherWidgetState();
-}
-
-class _todayWeatherWidgetState extends State<todayWeatherWidget> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-          appBar: AppBar( 
-             title: Text("Today's weather"),
-             backgroundColor: Colors.blueAccent.withOpacity(0.5),
+    return Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(
+              'Today Details',
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          body: Container(
-             color: Colors.redAccent,
-             child: Stack( 
-                 children: [
-                     Image.asset("assets/images/dark.jpg"),
-                     Container( 
-                        width: double.infinity,
-                        color: Color.fromARGB(100, 22, 44, 33),
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(40),
-                        child: Text("Today's weather",
-                             style: TextStyle(fontSize: 25, color: Colors.white),),
-                     ),
-                 ],
-             ),
-          )
-       );
+          Container(
+            height: MediaQuery.of(context).size.height / 3,
+            width: MediaQuery.of(context).size.width,
+            child: GridView(
+              padding: EdgeInsets.all(15),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 250,
+                childAspectRatio: 2 / 1,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              children: [
+                _gridWeatherBuilder('${weatherProv.weather.humidity}%',
+                    'Humidity', MdiIcons.waterPercent),
+                _gridWeatherBuilder('${weatherProv.weather.windSpeed} km/h',
+                    'Wind', MdiIcons.weatherWindy),
+                _gridWeatherBuilder(
+                    '${weatherProv.weather.feelsLike.toStringAsFixed(1)}°C',
+                    'Feels Like',
+                    MdiIcons.temperatureCelsius),
+                _gridWeatherBuilder('${weatherProv.weather.pressure} hPa',
+                    'Pressure', MdiIcons.arrowDownCircle),
+              ],
+            ),
+          ),
+        ],
+      );
+    });
   }
 }
