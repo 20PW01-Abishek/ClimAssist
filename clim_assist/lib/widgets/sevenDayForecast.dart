@@ -73,7 +73,7 @@ class sevenDayForecast extends StatelessWidget {
                                     '${weatherProv.weather.temp.toStringAsFixed(1)}°C',
                                     style: TextStyle(
                                         fontSize: 30,
-                                        color:ColorConstants.fontColor,
+                                        color: ColorConstants.fontColor,
                                         fontWeight: FontWeight.w400)),
                                 MapString.mapInputToWeather(
                                     context, '${weatherProv.weather.currently}')
