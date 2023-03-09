@@ -90,7 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           physics: BouncingScrollPhysics(),
                           controller: _pageController,
                           children: [
-                            // First Page of the Page View
                             RefreshIndicator(
                               onRefresh: () async => _refreshData(context),
                               child: ListView(
@@ -115,7 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             ),
-                            // Second Page of the Page View
                             ListView(
                               padding: const EdgeInsets.all(10),
                               children: [

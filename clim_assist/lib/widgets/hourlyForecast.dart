@@ -62,7 +62,7 @@ class HourlyForecast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -77,21 +77,20 @@ class HourlyForecast extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              // TextButton(
-              //   child:Text(
-              //     'See More',
-              //     style: TextStyle(color: Colors.blue),
-              //   ),
-              //   onPressed: () {
-              //     Navigator.of(context).pushNamed(hourlyWeather.routeName);
-              //   }, Widget: null,
-              // ),
-              
+              ElevatedButton(
+                child: Text(
+                  'See More',
+                  style: TextStyle(color: Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(hourlyWeather.routeName);
+                },
+              ),
             ],
           ),
         ),
         SizedBox(height: 5),
-        Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
+        Consumer<WeatherProvider> (builder: (context, weatherProv,_) {
           return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: weatherProv.hourlyWeather

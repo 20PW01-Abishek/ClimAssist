@@ -70,14 +70,15 @@ class _LocationErrorState extends State<LocationError> {
                             ],
                           ),
                         ),
-                        // actions: <Widget>[
-                        //   TextButton(
-                        //     child: Text('OK'),
-                        //     onPressed: () {
-                        //       Navigator.of(context).pop();
-                        //     }, Widget: null
-                        //   ),
-                        // ],
+                        actions: <Widget>[
+                          ElevatedButton
+                          (
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
                       );
                     },
                   );
