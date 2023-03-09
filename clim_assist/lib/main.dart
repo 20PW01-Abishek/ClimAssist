@@ -1,13 +1,11 @@
-
-import 'package:clim_assist/screens/hourlyWeather.dart';
-import 'package:clim_assist/screens/splashScreen.dart';
+import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// import 'screens/hourlyWeatherScreen.dart';
+import 'screens/hourlyWeather.dart';
 import './provider/weatherProvider.dart';
-// import 'screens/weeklyWeatherScreen.dart';
-// import 'screens/homeScreen.dart';
+import 'screens/weeklyWeather.dart';
+import 'screens/homeScreen.dart';
 
 void main() {
   runApp(
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => WeatherProvider(),
       child: MaterialApp(
-        title: 'ClimAssist',
+        title: 'Clim Assist',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
@@ -30,19 +28,17 @@ class MyApp extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: ColorConstants.primaryColor,
           primaryColor: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           colorScheme:
-              ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
+              ColorScheme.fromSwatch().copyWith(secondary: ColorConstants.secondaryColor),
         ),
-        home: 
-        // SplashScreen(),
-        hourlyWeather()
-        // routes: {
-        //   WeeklyScreen.routeName: (myCtx) => WeeklyScreen(),
-        //   HourlyScreen.routeName: (myCtx) => HourlyScreen(),
-        // },
+        home: HomeScreen(),
+        routes: {
+          weeklyWeather.routeName: (myCtx) => weeklyWeather(),
+          hourlyWeather.routeName: (myCtx) => hourlyWeather(),
+        },
       ),
     );
   }

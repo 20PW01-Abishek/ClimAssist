@@ -7,6 +7,7 @@ import '../provider/weatherProvider.dart';
 
 class hourlyWeather extends StatelessWidget {
   static const routeName = '/hourlyWeather';
+  dynamic weather;
 
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final time = weather.date;

@@ -1,10 +1,11 @@
-import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:clim_assist/provider/weatherProvider.dart';
+import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
+import '../constants.dart';
+import '../provider/weatherProvider.dart';
 
-class weatherDetail extends StatelessWidget {
+class WeatherDetail extends StatelessWidget {
   Widget _gridWeatherBuilder(String header, String body, IconData icon) {
     return Material(
       elevation: 5,
@@ -17,7 +18,7 @@ class weatherDetail extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: ColorConstants.secondaryColor, 
+              color: Colors.blue,
               size: 35,
             ),
             const SizedBox(width: 15.0),
@@ -30,6 +31,7 @@ class weatherDetail extends StatelessWidget {
                     header,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
+                      color:ColorConstants.fontColor,
                       fontSize: 18,
                     ),
                   ),
@@ -37,7 +39,7 @@ class weatherDetail extends StatelessWidget {
                 FittedBox(
                   child: Text(
                     body,
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15,color:ColorConstants.fontColor),
                   ),
                 ),
               ],

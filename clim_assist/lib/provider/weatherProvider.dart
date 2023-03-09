@@ -7,7 +7,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 
 import '../models/dailyWeather.dart';
-import '../models/Weather.dart';
+import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {
   String apiKey = '4aaf3f194039c2eae46d6693c587b8d8';
