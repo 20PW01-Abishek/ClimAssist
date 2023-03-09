@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           appBarTheme: AppBarTheme(
             iconTheme: IconThemeData(
-              color: Colors.blue,
+              color: ColorConstants.secondaryColor,
             ),
             elevation: 0,
           ),
           scaffoldBackgroundColor: ColorConstants.primaryColor,
-          primaryColor: Colors.blue,
+          primaryColor: ColorConstants.secondaryColor,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           colorScheme:
               ColorScheme.fromSwatch().copyWith(secondary: ColorConstants.secondaryColor),

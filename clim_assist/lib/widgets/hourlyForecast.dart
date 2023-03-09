@@ -77,15 +77,15 @@ class HourlyForecast extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextButton(
-                child:Text(
-                  'See More',
-                  style: TextStyle(color: Colors.blue),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(hourlyWeather.routeName);
-                }, Widget: null,
-              ),
+              // TextButton(
+              //   child:Text(
+              //     'See More',
+              //     style: TextStyle(color: Colors.blue),
+              //   ),
+              //   onPressed: () {
+              //     Navigator.of(context).pushNamed(hourlyWeather.routeName);
+              //   }, Widget: null,
+              // ),
               
             ],
           ),

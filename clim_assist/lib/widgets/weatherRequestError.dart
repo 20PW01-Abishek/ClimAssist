@@ -1,3 +1,4 @@
+import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:clim_assist/provider/weatherProvider.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +13,14 @@ class RequestError extends StatelessWidget {
         children: [
           Icon(
             Icons.wrong_location_outlined,
-            color: Colors.blue,
+            color: ColorConstants.secondaryColor,
             size: 100,
           ),
           SizedBox(height: 10),
           Text(
             'No Search Result',
             style: TextStyle(
-              color: Colors.blue,
+              color: ColorConstants.secondaryColor,
               fontSize: 30,
               fontWeight: FontWeight.w700,
             ),
