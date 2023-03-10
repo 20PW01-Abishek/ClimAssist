@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class UvIndex {
   static String mapUviValueToString({required dynamic uvi}) {
     String uvIndex;
+    uvi = 0;
     if (uvi <= 2) {
       return uvIndex = 'Low';
     } else if (uvi <= 5) {

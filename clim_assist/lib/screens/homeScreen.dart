@@ -62,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // if (weatherProv.isRequestError) {
             //   return RequestError();
             // }
+
             return Column(
               children: [
                 SearchBar(),

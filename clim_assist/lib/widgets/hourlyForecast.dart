@@ -74,13 +74,20 @@ return Column(
                 'Next 3 Hours',
                 style: TextStyle(
                   fontSize: 17,
+                  color: ColorConstants.fontColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: ColorConstants.secondaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 child: Text(
                   'See More',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(hourlyWeather.routeName);
