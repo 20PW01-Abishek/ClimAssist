@@ -36,12 +36,13 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSwatch().copyWith(secondary: ColorConstants.secondaryColor),
         ),
         home:
-         HomeScreen(),
-        // sunriseSunset(sunrise: sunrise, sunset: sunset)
-        routes: {
-          weeklyWeather.routeName: (myCtx) => weeklyWeather(),
-          hourlyWeather.routeName: (myCtx) => hourlyWeather(),
-        },
+        SunriseSunsetWidget()
+        //  HomeScreen(),
+        // // sunriseSunset(sunrise: sunrise, sunset: sunset)
+        // routes: {
+        //   weeklyWeather.routeName: (myCtx) => weeklyWeather(),
+        //   hourlyWeather.routeName: (myCtx) => hourlyWeather(),
+        // },
         // home:sunriseSunset(sunrise: , sunset: sunset)
       ),
     );

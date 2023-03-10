@@ -10,7 +10,6 @@ class HourlyForecast extends StatelessWidget {
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final currentTime = weather.date;
     final hours = DateFormat.Hm().format(currentTime);
-
     return Container(
       height: 175,
       padding: const EdgeInsets.all(5.0),
