@@ -39,7 +39,7 @@ class _SunAnimationState extends State<SunAnimation>
       child: RotationTransition(
         turns: _animation,
         child: SvgPicture.asset(
-          'assets/images/sun.svg',
+          'assets/images/sunn.svg',
           height: 150,
         ),
       ),

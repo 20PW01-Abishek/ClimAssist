@@ -1,3 +1,4 @@
+import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/widgets/SunAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +18,7 @@ class SunriseSunsetApp extends StatefulWidget {
 }
 
 class _SunriseSunsetState extends State<SunriseSunsetApp> {
-  late String _timeString;
+  late String _timeString = "";
   String _locationString = "";
   String _sunriseTimeString = "";
   String _sunsetTimeString = "";
@@ -84,7 +85,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
             gradient: LinearGradient(
               colors: DateTime.now().hour < 12 // if current time is morning
                   ? [Color(0xFFFFA500), Color(0xFFFFD700)] // orange and yellow
-                  : [Colors.deepPurple, Colors.blue], // else blue and purple
+                  : [ColorConstants.primaryColor, Colors.purpleAccent], // else blue and purple
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
