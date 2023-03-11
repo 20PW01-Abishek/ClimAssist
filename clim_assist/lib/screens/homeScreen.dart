@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final themeContext = Theme.of(context);
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(

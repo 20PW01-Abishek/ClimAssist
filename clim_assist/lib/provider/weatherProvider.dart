@@ -10,6 +10,18 @@ import '../models/dailyWeather.dart';
 import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {
+  List<String> _favoriteLocations = [];
+
+  List<String> get favoriteLocations => _favoriteLocations;
+
+  void addFavoriteLocation(String location) {
+    if (!_favoriteLocations.contains(location)) {
+      _favoriteLocations.add(location);
+      print(_favoriteLocations);
+      notifyListeners();
+    }
+  }
+
   String apiKey = '4aaf3f194039c2eae46d6693c587b8d8';
   LatLng? currentLocation;
   late Weather weather;
@@ -84,7 +96,7 @@ class WeatherProvider with ChangeNotifier {
           .skip(1)
           .take(3)
           .toList();
-     
+
       temp24Hour = itemsHourly
           .map((item) => DailyWeather.fromHourlyJson(item))
           .toList()

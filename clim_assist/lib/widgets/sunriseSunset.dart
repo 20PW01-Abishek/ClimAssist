@@ -29,7 +29,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
   @override
   void initState() {
     super.initState();
-    // _getCurrentLocation();
+    _getCurrentLocation();
     _updateTime();
     _getCurrentWeather();
   }
@@ -78,13 +78,23 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: ColorConstants.primaryColor,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: ColorConstants.secondaryColor),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text('Sunrise Sunset',
+              style: TextStyle(color: ColorConstants.secondaryColor)),
+          centerTitle: true,
+        ),
         body: Container(
           height: screenHeight,
           width: screenWidth,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: DateTime.now().hour < 12 // if current time is morning
-                  ? [ColorConstants.primaryColor, ColorConstants.primaryColor] 
+                  ? [ColorConstants.primaryColor, ColorConstants.primaryColor]
                   : [ColorConstants.primaryColor, ColorConstants.primaryColor],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -133,11 +143,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                     // ),
                     SunAnimation(),
                     SizedBox(height: 10),
-                    Text(
-                      'Sunrise and Sunset',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
-                    ),
-                    SizedBox(height: 10),
+
                     Text(
                       'Sunrise: ${DateFormat.jm().format(sunriseTime)}',
                       style: TextStyle(fontSize: 18, color: Colors.white),

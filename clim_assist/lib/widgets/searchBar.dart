@@ -33,59 +33,74 @@ class _SearchBarState extends State<SearchBar> {
             elevation: 10,
             borderRadius: BorderRadius.circular(15),
             color: ColorConstants.primaryColor,
-            child: TypeAheadField<String>(
-              suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              suggestionsCallback: (pattern) async {
-                return await Provider.of<WeatherProvider>(context, listen: false)
-                    .searchLocations(query: pattern);
-              },
-              itemBuilder: (context, suggestion) {
-                return ListTile(
-                  title: Text(suggestion),
-                );
-              },
-              onSuggestionSelected: (suggestion) {
-                _textController.text = suggestion;
-                Provider.of<WeatherProvider>(context, listen: false)
-                    .searchWeather(location: suggestion);
-              },
-              textFieldConfiguration: TextFieldConfiguration(
-                enabled: !weatherProv.isLoading,
-                style: TextStyle(color: ColorConstants.fontColor),
-                maxLines: 1,
-                controller: _textController,
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(color: Colors.grey),
-                  errorText: _validate ? null : null,
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  icon: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Icon(
-                      Icons.search,
-                      color: ColorConstants.secondaryColor,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TypeAheadField<String>(
+                    suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    suggestionsCallback: (pattern) async {
+                      return await Provider.of<WeatherProvider>(context, listen: false)
+                          .searchLocations(query: pattern);
+                    },
+                    itemBuilder: (context, suggestion) {
+                      return ListTile(
+                        title: Text(suggestion),
+                      );
+                    },
+                    onSuggestionSelected: (suggestion) {
+                      _textController.text = suggestion;
+                      Provider.of<WeatherProvider>(context, listen: false)
+                          .searchWeather(location: suggestion);
+                    },
+                    textFieldConfiguration: TextFieldConfiguration(
+                      enabled: !weatherProv.isLoading,
+                      style: TextStyle(color: ColorConstants.fontColor),
+                      maxLines: 1,
+                      controller: _textController,
+                      decoration: InputDecoration(
+                        hintStyle: TextStyle(color: Colors.grey),
+                        errorText: _validate ? null : null,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        icon: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Icon(
+                            Icons.search,
+                            color: ColorConstants.secondaryColor,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.only(
+                          left: 0,
+                          bottom: 11,
+                          top: 11,
+                          right: 15,
+                        ),
+                        hintText: "Search Location",
+                      ),
+                      onSubmitted: (value) {
+                        setState(() {
+                          _textController.text.isEmpty
+                              ? _validate = true
+                              : Provider.of<WeatherProvider>(context, listen: false)
+                                  .searchWeather(location: value);
+                        });
+                      },
                     ),
                   ),
-                  contentPadding: EdgeInsets.only(
-                    left: 0,
-                    bottom: 11,
-                    top: 11,
-                    right: 15,
-                  ),
-                  hintText: "Search Location",
                 ),
-                onSubmitted: (value) {
-                  setState(() {
-                    _textController.text.isEmpty
-                        ? _validate = true
-                        : Provider.of<WeatherProvider>(context, listen: false)
-                            .searchWeather(location: value);
-                  });
-                },
-              ),
+                IconButton(
+                  icon: Icon(Icons.favorite_border,color:ColorConstants.secondaryColor),
+                  onPressed: () {
+                    if (_textController.text.isNotEmpty) {
+                      Provider.of<WeatherProvider>(context, listen: false)
+                          .addFavoriteLocation(_textController.text);
+                    }
+                  },
+                ),
+              ],
             ),
           ),
         ),
