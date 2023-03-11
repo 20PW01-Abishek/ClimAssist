@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_weather_icons/flutter_weather_icons.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 import 'dart:async';
 
 void main() {
@@ -34,8 +35,8 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
   void _getCurrentLocation() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemarks = await Geolocator.placemarkFromCoordinates(
-        position.latitude, position.longitude);
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark placemark = placemarks[0];
     setState(() {
       _locationString =
@@ -52,10 +53,8 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
   }
 
   void _getCurrentWeather() {
-    // Code to get the current weather information using an API
-    // ...
     setState(() {
-      _temperatureString = "72°F";
+      _temperatureString = "30°C";
       _weatherConditionString = "Sunny";
     });
   }
@@ -66,6 +65,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
     var screenWidth = MediaQuery.of(context).size.width;
 
     DateTime now = DateTime.now();
+    // DateTime now=DateTime(2021, 8, 20, 15, 30);
     DateTime sunriseTime = DateTime(now.year, now.month, now.day, 6, 30);
     DateTime sunsetTime = DateTime(now.year, now.month, now.day, 18, 0);
 
@@ -82,8 +82,8 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: _isDaytime
-                  ? [Colors.yellow[200], Colors.orange[300]]
-                  : [Colors.deepPurple[400], Colors.blue[900]],
+                  ? [Color.fromARGB(255, 241, 213, 3), Color.fromARGB(255, 237, 120, 4)]
+                  : [Colors.deepPurple, Colors.blue],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -149,8 +149,8 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                   children: [
                     Icon(
                       _isDaytime
-                          ? WeatherIcons.day_sunny
-                          : WeatherIcons.night_clear,
+                          ? WeatherIcons.wiSunrise
+                          : WeatherIcons.wiSunset,
                       size: 100,
                       color: Colors.white,
                     ),

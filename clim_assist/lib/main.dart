@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSwatch().copyWith(secondary: ColorConstants.secondaryColor),
         ),
         home:
-        SunriseSunsetWidget()
+        SunriseSunsetApp()
         //  HomeScreen(),
         // // sunriseSunset(sunrise: sunrise, sunset: sunset)
         // routes: {
