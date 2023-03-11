@@ -1,3 +1,4 @@
+import 'package:clim_assist/widgets/SunAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -81,9 +82,9 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
           width: screenWidth,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: _isDaytime
-                  ? [Color.fromARGB(255, 241, 213, 3), Color.fromARGB(255, 237, 120, 4)]
-                  : [Colors.deepPurple, Colors.blue],
+              colors: DateTime.now().hour < 12 // if current time is morning
+                  ? [Color(0xFFFFA500), Color(0xFFFFD700)] // orange and yellow
+                  : [Colors.deepPurple, Colors.blue], // else blue and purple
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -123,22 +124,26 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
               Container(
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      _isDaytime
-                          ? 'assets/images/sun.svg'
-                          : 'assets/images/sun.svg',
-                      height: 100,
-                    ),
+                    // SvgPicture.asset(
+                    //   _isDaytime
+                    //       ? 'assets/images/suntemp.svg'
+                    //       : 'assets/images/suntemp.svg',
+                    //   height: 100,
+                    // ),
+                    SunAnimation(),
                     SizedBox(height: 10),
                     Text(
-                      _isDaytime ? "Sunrise" : "Sunset",
+                      'Sunrise and Sunset',
                       style: TextStyle(fontSize: 24, color: Colors.white),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      _isDaytime
-                          ? DateFormat.jm().format(sunriseTime)
-                          : DateFormat.jm().format(sunsetTime),
+                      'Sunrise: ${DateFormat.jm().format(sunriseTime)}',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Sunset: ${DateFormat.jm().format(sunsetTime)}',
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ],

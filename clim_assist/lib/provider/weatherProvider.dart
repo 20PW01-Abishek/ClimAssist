@@ -84,6 +84,7 @@ class WeatherProvider with ChangeNotifier {
           .skip(1)
           .take(3)
           .toList();
+     
       temp24Hour = itemsHourly
           .map((item) => DailyWeather.fromHourlyJson(item))
           .toList()
@@ -133,27 +134,24 @@ class WeatherProvider with ChangeNotifier {
     await getDailyWeather(LatLng(latitude, longitude));
   }
 
- Future<List<String>> searchLocations({required String query}) async {
-  try {
-    final response = await Dio().get(
-      "https://api.openweathermap.org/geo/1.0/direct",
-      queryParameters: {
-        "q": query,
-        "limit": 5,
-        "appid": apiKey,
-      },
-    );
-    final List<String> locations = [];
-    response.data.forEach((location) {
-      locations.add(location['name']);
-    });
-    return locations;
-  } catch (e) {
-    print(e);
-    return [];
+  Future<List<String>> searchLocations({required String query}) async {
+    try {
+      final response = await Dio().get(
+        "https://api.openweathermap.org/geo/1.0/direct",
+        queryParameters: {
+          "q": query,
+          "limit": 5,
+          "appid": apiKey,
+        },
+      );
+      final List<String> locations = [];
+      response.data.forEach((location) {
+        locations.add(location['name']);
+      });
+      return locations;
+    } catch (e) {
+      print(e);
+      return [];
+    }
   }
-}
-
-
-
 }

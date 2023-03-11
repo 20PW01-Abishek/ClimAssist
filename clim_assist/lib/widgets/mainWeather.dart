@@ -1,4 +1,5 @@
 import 'package:clim_assist/provider/weatherProvider.dart';
+import 'package:clim_assist/widgets/sunriseSunset.dart';
 import 'package:clim_assist/widgets/weatherDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ class MainWeather extends StatelessWidget {
     fontSize: 20,
   );
   final TextStyle _style2 = TextStyle(
-    color:ColorConstants.fontColor,
+    color: ColorConstants.fontColor,
     fontWeight: FontWeight.w400,
     // color: Colors.grey[700],
     fontSize: 16,
@@ -68,6 +69,24 @@ class MainWeather extends StatelessWidget {
               toBeginningOfSentenceCase('${weatherProv.weather.description}') ??
                   '',
               style: _style1.copyWith(fontSize: 19),
+            ),
+            // Spacer(),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SunriseSunsetApp()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: ColorConstants.secondaryColor,
+                onPrimary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Text('View Sunset/Sunrise',
+                  style: TextStyle(
+                      color: ColorConstants.primaryColor, fontSize: 18)),
             ),
           ],
         ),
