@@ -84,7 +84,7 @@ class MainWeather extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: Text('View Sunset/Sunrise',
+              child: Text('Sunset/Sunrise',
                   style: TextStyle(
                       color: ColorConstants.primaryColor, fontSize: 18)),
             ),

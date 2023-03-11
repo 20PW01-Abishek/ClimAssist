@@ -1,4 +1,5 @@
 import 'package:clim_assist/constants.dart';
+import 'package:clim_assist/screens/splashScreen.dart';
 import 'package:clim_assist/widgets/sunriseSunset.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,13 +37,14 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSwatch().copyWith(secondary: ColorConstants.secondaryColor),
         ),
         home:
+        SplashScreen()
         // SunriseSunsetApp()
-         HomeScreen(),
+        //  HomeScreen(),
         // sunriseSunset(sunrise: sunrise, sunset: sunset)
-        routes: {
-          weeklyWeather.routeName: (myCtx) => weeklyWeather(),
-          hourlyWeather.routeName: (myCtx) => hourlyWeather(),
-        },
+        // routes: {
+        //   weeklyWeather.routeName: (myCtx) => weeklyWeather(),
+        //   hourlyWeather.routeName: (myCtx) => hourlyWeather(),
+        // },
         // home:sunriseSunset(sunrise: , sunset: sunset)
       ),
     );
