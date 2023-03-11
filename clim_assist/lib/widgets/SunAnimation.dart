@@ -40,7 +40,7 @@ class _SunAnimationState extends State<SunAnimation>
         turns: _animation,
         child: SvgPicture.asset(
           'assets/images/sunn.svg',
-          height: 150,
+          height: 100,
         ),
       ),
     );

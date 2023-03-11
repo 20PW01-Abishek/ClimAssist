@@ -84,8 +84,8 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: DateTime.now().hour < 12 // if current time is morning
-                  ? [Color(0xFFFFA500), Color(0xFFFFD700)] // orange and yellow
-                  : [ColorConstants.primaryColor, Colors.purpleAccent], // else blue and purple
+                  ? [ColorConstants.primaryColor, ColorConstants.primaryColor] 
+                  : [ColorConstants.primaryColor, ColorConstants.primaryColor],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -101,7 +101,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: ColorConstants.fontColor),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -109,7 +109,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: ColorConstants.fontColor),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -117,7 +117,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                       style: TextStyle(
                           fontSize: 42,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: ColorConstants.secondaryColor),
                     ),
                   ],
                 ),
@@ -158,7 +158,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
                           ? WeatherIcons.wiSunrise
                           : WeatherIcons.wiSunset,
                       size: 100,
-                      color: Colors.white,
+                      color: ColorConstants.secondaryColor,
                     ),
                     SizedBox(height: 10),
                     Text(
