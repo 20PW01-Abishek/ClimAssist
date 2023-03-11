@@ -29,7 +29,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    // _getCurrentLocation();
     _updateTime();
     _getCurrentWeather();
   }
