@@ -2,7 +2,7 @@ import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:provider/provider.dart';
-import '../provider/weatherProvider.dart';
+import '../provider/weather_provider.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
 class SearchBar extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:clim_assist/provider/weatherProvider.dart';
+import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

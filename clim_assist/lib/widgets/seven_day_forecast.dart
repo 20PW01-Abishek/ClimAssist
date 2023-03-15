@@ -3,7 +3,7 @@
   import 'package:flutter/material.dart';
   import 'package:intl/intl.dart';
   import 'package:provider/provider.dart';
-  import '../provider/weatherProvider.dart';
+  import '../provider/weather_provider.dart';
 
   class sevenDayForecast extends StatelessWidget {
     // dynamic weather;

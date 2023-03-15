@@ -1,13 +1,8 @@
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/screens/splash_screen.dart';
-import 'package:clim_assist/widgets/sunrise_sunset.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/hourly_weather.dart';
-import './provider/weatherProvider.dart';
-import 'screens/weekly_weather.dart';
-import 'screens/home_screen.dart';
+import 'provider/weather_provider.dart';
 
 void main() {
   runApp(

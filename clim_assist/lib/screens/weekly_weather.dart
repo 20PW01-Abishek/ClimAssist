@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../constants.dart';
 import '../utils/utils.dart';
-import '../provider/weatherProvider.dart';
+import '../provider/weather_provider.dart';
 
 class WeeklyWeather extends StatelessWidget {
   static const routeName = '/weeklyWeather';

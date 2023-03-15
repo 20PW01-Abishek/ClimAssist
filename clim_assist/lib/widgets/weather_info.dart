@@ -1,8 +1,7 @@
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
-import '../provider/weatherProvider.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../provider/weather_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -12,13 +11,12 @@ class WeatherInfo extends StatelessWidget {
   Widget _weatherInfoBuilder({
     required String header,
     required String body,
-    required IconData icon,
-    double? iconSize,
+    required Widget svgPicture
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SunAnimation(),
+        svgPicture,
         const SizedBox(width: 16.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +58,7 @@ class WeatherInfo extends StatelessWidget {
               _weatherInfoBuilder(
                 header: 'Sunrise',
                 body: DateFormat.jm().format(sunriseTime),
-                icon: MdiIcons.weatherRainy,
+                svgPicture: const SunAnimation(svgloc: 'assets/images/sunn.svg',)
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -74,7 +72,7 @@ class WeatherInfo extends StatelessWidget {
               _weatherInfoBuilder(
                 header: 'Sunset',
                 body: DateFormat.jm().format(sunsetTime),
-                icon: MdiIcons.sunWireless,
+                svgPicture: const SunAnimation(svgloc: 'assets/images/moonn.svg',)
               ),
             ],
           ),

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class SunAnimation extends StatefulWidget {
-  const SunAnimation({super.key});
+  final String svgloc;
+  const SunAnimation({required this.svgloc, Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
   _SunAnimationState createState() => _SunAnimationState();
 }
 
-class _SunAnimationState extends State<SunAnimation>
-    with SingleTickerProviderStateMixin {
+class _SunAnimationState extends State<SunAnimation> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -37,7 +36,7 @@ class _SunAnimationState extends State<SunAnimation>
       child: RotationTransition(
         turns: _animation,
         child: SvgPicture.asset(
-          'assets/images/sunn.svg',
+          widget.svgloc,
           height: 40,
         ),
       ),

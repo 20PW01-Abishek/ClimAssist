@@ -1,6 +1,6 @@
 import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:clim_assist/provider/weatherProvider.dart';
+import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:provider/provider.dart';
 
 class RequestError extends StatelessWidget {

@@ -1,12 +1,14 @@
 import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
-import '../provider/weatherProvider.dart';
+import '../provider/weather_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../screens/hourly_weather.dart';
 import '../utils/utils.dart';
 
 class HourlyForecast extends StatelessWidget {
+  const HourlyForecast({super.key});
+
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final currentTime = weather.date;
     final hours = DateFormat.Hm().format(currentTime);
@@ -84,12 +86,12 @@ return Column(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'See More',
                   style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(hourlyWeather.routeName);
+                  Navigator.of(context).pushNamed(HourlyWeather.routeName);
                 },
               ),
             ],
