@@ -49,10 +49,7 @@ dependencies:
   flutter_svg: ^0.22.0
   flutter_weather_icons: ^1.0.2
   geolocator: ^7.0.3
-  geocoding: ^2.0.5
-
-  # sunrise_sunset: ^1.0.2
- 
+  geocoding: ^2.0.5 
 
 dev_dependencies:
   flutter_test:

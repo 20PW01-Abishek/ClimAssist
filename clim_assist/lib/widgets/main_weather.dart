@@ -15,6 +15,7 @@ class MainWeather extends StatelessWidget {
   final TextStyle _style2 = TextStyle(
     color: ColorConstants.fontColor,
     fontWeight: FontWeight.w400,
+    // color: Colors.grey[700],
     fontSize: 16,
   );
 
@@ -23,9 +24,6 @@ class MainWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
-      DateTime now = DateTime.now();
-      DateTime sunriseTime = DateTime(now.year, now.month, now.day, 6, 30);
-      DateTime sunsetTime = DateTime(now.year, now.month, now.day, 18, 0);
       return Container(
         padding: const EdgeInsets.fromLTRB(25, 15, 25, 5),
         child: Column(
@@ -75,24 +73,6 @@ class MainWeather extends StatelessWidget {
             Text(
               toBeginningOfSentenceCase(weatherProv.weather.description) ?? '',
               style: _style1.copyWith(fontSize: 19),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  SunAnimation(),
-                  SizedBox(height: 10),
-
-                  Text(
-                    'Sunrise: ${DateFormat.jm().format(sunriseTime)}',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Sunset: ${DateFormat.jm().format(sunsetTime)}',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ],
-              ),
             ),
             // Spacer(),
             // ElevatedButton(

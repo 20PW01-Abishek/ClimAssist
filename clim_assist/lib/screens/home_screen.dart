@@ -1,9 +1,9 @@
+import 'package:clim_assist/widgets/weather_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../provider/weatherProvider.dart';
-import '../widgets/WeatherInfo.dart';
 import '../widgets/fade_in.dart';
 import '../widgets/hourly_forecast.dart';
 import '../widgets/location_error.dart';

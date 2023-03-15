@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import '../provider/weatherProvider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
-
-import '../utils/utils.dart';
+import 'package:intl/intl.dart';
 
 class WeatherInfo extends StatelessWidget {
   const WeatherInfo({super.key});
@@ -46,6 +45,9 @@ class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
+      DateTime now = DateTime.now();
+      DateTime sunriseTime = DateTime(now.year, now.month, now.day, 6, 30);
+      DateTime sunsetTime = DateTime(now.year, now.month, now.day, 18, 0);
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
         child: Material(
@@ -56,8 +58,8 @@ class WeatherInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _weatherInfoBuilder(
-                header: 'Precipitation',
-                body: '${weatherProv.currentWeather.precip}%',
+                header: 'Sunrise',
+                body: DateFormat.jm().format(sunriseTime),
                 icon: MdiIcons.weatherRainy,
               ),
               Container(
@@ -70,9 +72,8 @@ class WeatherInfo extends StatelessWidget {
                 ),
               ),
               _weatherInfoBuilder(
-                header: 'UV Index',
-                body: UvIndex.mapUviValueToString(
-                    uvi: weatherProv.currentWeather.uvi),
+                header: 'Sunset',
+                body: DateFormat.jm().format(sunsetTime),
                 icon: MdiIcons.sunWireless,
               ),
             ],
