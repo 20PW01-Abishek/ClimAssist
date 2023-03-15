@@ -1,5 +1,5 @@
 import 'package:clim_assist/constants.dart';
-import 'package:clim_assist/widgets/SunAnimation.dart';
+import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,7 +47,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
   }
 
   void _updateTime() {
-    Timer.periodic(Duration(seconds: 1), (Timer t) {
+    Timer.periodic(const Duration(seconds: 1), (Timer t) {
       setState(() {
         _timeString = DateFormat.jm().format(DateTime.now());
       });
@@ -135,12 +135,6 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
               Container(
                 child: Column(
                   children: [
-                    // SvgPicture.asset(
-                    //   _isDaytime
-                    //       ? 'assets/images/suntemp.svg'
-                    //       : 'assets/images/suntemp.svg',
-                    //   height: 100,
-                    // ),
                     SunAnimation(),
                     SizedBox(height: 10),
 
@@ -159,13 +153,7 @@ class _SunriseSunsetState extends State<SunriseSunsetApp> {
               Container(
                 child: Column(
                   children: [
-                    Icon(
-                      _isDaytime
-                          ? WeatherIcons.wiSunrise
-                          : WeatherIcons.wiSunset,
-                      size: 100,
-                      color: ColorConstants.secondaryColor,
-                    ),
+                    SunAnimation(),
                     SizedBox(height: 10),
                     Text(
                       _temperatureString,

@@ -6,8 +6,10 @@ import '../constants.dart';
 import '../utils/utils.dart';
 import '../provider/weatherProvider.dart';
 
-class weeklyWeather extends StatelessWidget {
+class WeeklyWeather extends StatelessWidget {
   static const routeName = '/weeklyWeather';
+
+  const WeeklyWeather({super.key});
 
   Widget dailyWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = DateFormat('EEEEE').format(weather.date);

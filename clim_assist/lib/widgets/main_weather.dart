@@ -1,6 +1,5 @@
 import 'package:clim_assist/provider/weatherProvider.dart';
-import 'package:clim_assist/widgets/sunriseSunset.dart';
-import 'package:clim_assist/widgets/weatherDetail.dart';
+import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -16,13 +15,17 @@ class MainWeather extends StatelessWidget {
   final TextStyle _style2 = TextStyle(
     color: ColorConstants.fontColor,
     fontWeight: FontWeight.w400,
-    // color: Colors.grey[700],
     fontSize: 16,
   );
+
+  MainWeather({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
+      DateTime now = DateTime.now();
+      DateTime sunriseTime = DateTime(now.year, now.month, now.day, 6, 30);
+      DateTime sunsetTime = DateTime(now.year, now.month, now.day, 18, 0);
       return Container(
         padding: const EdgeInsets.fromLTRB(25, 15, 25, 5),
         child: Column(
@@ -30,8 +33,12 @@ class MainWeather extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.location_on_outlined),
-                Text('${weatherProv.weather.cityName}', style: _style1),
+                Icon(
+                  Icons.location_on_outlined,
+                  color: ColorConstants.secondaryColor,
+                  size: 35,
+                ),
+                Text(weatherProv.weather.cityName, style: _style1),
               ],
             ),
             const SizedBox(height: 5.0),
@@ -45,7 +52,7 @@ class MainWeather extends StatelessWidget {
               children: [
                 MapString.mapStringToIcon(
                   context,
-                  '${weatherProv.weather.currently}',
+                  weatherProv.weather.currently,
                   55,
                 ),
                 const SizedBox(width: 16.0),
@@ -66,28 +73,45 @@ class MainWeather extends StatelessWidget {
             ),
             const SizedBox(height: 5.0),
             Text(
-              toBeginningOfSentenceCase('${weatherProv.weather.description}') ??
-                  '',
+              toBeginningOfSentenceCase(weatherProv.weather.description) ?? '',
               style: _style1.copyWith(fontSize: 19),
             ),
-            // Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SunriseSunsetApp()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                primary: ColorConstants.secondaryColor,
-                onPrimary: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+            Container(
+              child: Column(
+                children: [
+                  SunAnimation(),
+                  SizedBox(height: 10),
+
+                  Text(
+                    'Sunrise: ${DateFormat.jm().format(sunriseTime)}',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Sunset: ${DateFormat.jm().format(sunsetTime)}',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ],
               ),
-              child: Text('Sunset/Sunrise',
-                  style: TextStyle(
-                      color: ColorConstants.primaryColor, fontSize: 18)),
             ),
+            // Spacer(),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(builder: (context) => SunriseSunsetApp()),
+            //     );
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     primary: ColorConstants.secondaryColor,
+            //     onPrimary: Colors.black,
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //   ),
+            //   child: Text('Sunset/Sunrise',
+            //       style: TextStyle(
+            //           color: ColorConstants.primaryColor, fontSize: 18)),
+            // ),
           ],
         ),
       );

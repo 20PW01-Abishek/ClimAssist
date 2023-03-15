@@ -1,4 +1,5 @@
 import 'package:clim_assist/constants.dart';
+import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
 import '../provider/weatherProvider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -7,6 +8,8 @@ import 'package:provider/provider.dart';
 import '../utils/utils.dart';
 
 class WeatherInfo extends StatelessWidget {
+  const WeatherInfo({super.key});
+
   Widget _weatherInfoBuilder({
     required String header,
     required String body,
@@ -16,11 +19,7 @@ class WeatherInfo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Icon(
-          icon,
-          color: ColorConstants.secondaryColor,
-          size: iconSize ?? 40,
-        ),
+        SunAnimation(),
         const SizedBox(width: 16.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

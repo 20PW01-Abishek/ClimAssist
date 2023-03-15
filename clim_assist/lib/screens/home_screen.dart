@@ -4,14 +4,14 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../provider/weatherProvider.dart';
 import '../widgets/WeatherInfo.dart';
-import '../widgets/fadeIn.dart';
-import '../widgets/hourlyForecast.dart';
-import '../widgets/locationError.dart';
-import '../widgets/mainWeather.dart';
-import '../widgets/weatherRequestError.dart';
-import '../widgets/searchBar.dart';
-import '../widgets/weatherDetail.dart';
-import '../widgets/sevenDayForecast.dart';
+import '../widgets/fade_in.dart';
+import '../widgets/hourly_forecast.dart';
+import '../widgets/location_error.dart';
+import '../widgets/main_weather.dart';
+import '../widgets/weather_request_error.dart';
+import '../widgets/search_bar.dart';
+import '../widgets/weather_detail.dart';
+import '../widgets/seven_day_forecast.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
