@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_weather_icons/flutter_weather_icons.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
-import 'dart:async';
 
 
 class SunAnimation extends StatefulWidget {
@@ -22,9 +17,9 @@ class _SunAnimationState extends State<SunAnimation>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
-    )..repeat(reverse: true);
-    _animation = Tween<double>(begin: 0, end: 360).animate(_controller);
+      duration: const Duration(seconds: 10),
+    )..repeat(reverse: false);
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
   }
 
   @override
