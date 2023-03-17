@@ -91,15 +91,7 @@ class _SearchBarState extends State<SearchBar> {
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.favorite_border,color:ColorConstants.secondaryColor),
-                  onPressed: () {
-                    if (_textController.text.isNotEmpty) {
-                      Provider.of<WeatherProvider>(context, listen: false)
-                          .addFavoriteLocation(_textController.text);
-                    }
-                  },
-                ),
+                
               ],
             ),
           ),

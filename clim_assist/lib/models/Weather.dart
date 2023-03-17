@@ -13,6 +13,7 @@ class Weather with ChangeNotifier {
   final int humidity;
   final double windSpeed;
   final String cityName;
+  
 
   Weather({
     required this.temp,
