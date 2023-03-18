@@ -10,17 +10,6 @@ import '../models/dailyWeather.dart';
 import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {
-  List<String> _favoriteLocations = [];
-
-  List<String> get favoriteLocations => _favoriteLocations;
-
-  void addFavoriteLocation(String location) {
-    if (!_favoriteLocations.contains(location)) {
-      _favoriteLocations.add(location);
-      print(_favoriteLocations);
-      notifyListeners();
-    }
-  }
 
   String apiKey = '4aaf3f194039c2eae46d6693c587b8d8';
   LatLng? currentLocation;
@@ -54,6 +43,42 @@ class WeatherProvider with ChangeNotifier {
       },
     );
   }
+
+  List<String> _favoriteLocations = [];
+
+  // Getter for favorite locations
+  List<String> get favoriteLocations => _favoriteLocations;
+
+  // Add a location to favorites
+  void addFavoriteLocation(String location) {
+    if (!_favoriteLocations.contains(location)) {
+      _favoriteLocations.add(location);
+      notifyListeners();
+    }
+  }
+
+  // Remove a location from favorites
+  void removeFavoriteLocation(String location) {
+    if (_favoriteLocations.contains(location)) {
+      _favoriteLocations.remove(location);
+      notifyListeners();
+    }
+  }
+
+  // Check if a location is a favorite
+  bool isFavoriteLocation(String location) {
+    return _favoriteLocations.contains(location);
+  }
+
+  // Toggle a location's favorite status
+  void toggleFavoriteLocation(String location) {
+    if (isFavoriteLocation(location)) {
+      removeFavoriteLocation(location);
+    } else {
+      addFavoriteLocation(location);
+    }
+  }
+  
 
   Future<void> getCurrentWeather(LatLng location) async {
     Uri url = Uri.parse(
@@ -96,6 +121,7 @@ class WeatherProvider with ChangeNotifier {
           .skip(1)
           .take(3)
           .toList();
+        
 
       temp24Hour = itemsHourly
           .map((item) => DailyWeather.fromHourlyJson(item))

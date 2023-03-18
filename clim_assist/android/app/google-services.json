@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "81292145909",
+    "project_id": "weather-e70d0",
+    "storage_bucket": "weather-e70d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81292145909:android:d1f5f4ea489277a23f41bc",
+        "android_client_info": {
+          "package_name": "com.example.clim_assist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81292145909-f0pl04lgjo1l63d0qa54i3tni44ulmgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7AZX8tEU671p2LmXo2OHDAFcwjB0j7aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81292145909-f0pl04lgjo1l63d0qa54i3tni44ulmgu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

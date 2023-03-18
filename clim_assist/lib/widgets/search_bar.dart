@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../provider/weather_provider.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
+import '../screens/favorites_screen.dart';
+
 class SearchBar extends StatefulWidget {
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -41,12 +43,29 @@ class _SearchBarState extends State<SearchBar> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     suggestionsCallback: (pattern) async {
-                      return await Provider.of<WeatherProvider>(context, listen: false)
+                      return await Provider.of<WeatherProvider>(context,
+                              listen: false)
                           .searchLocations(query: pattern);
                     },
                     itemBuilder: (context, suggestion) {
                       return ListTile(
                         title: Text(suggestion),
+                        trailing: IconButton(
+                          icon: Icon(
+                            weatherProv.isFavoriteLocation(suggestion)
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                          ),
+                          color: ColorConstants.secondaryColor,
+                          onPressed: () {
+                            // Navigate to the FavoritesScreen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FavoritesScreen()),
+                            );
+                          },
+                        ),
                       );
                     },
                     onSuggestionSelected: (suggestion) {
@@ -84,14 +103,14 @@ class _SearchBarState extends State<SearchBar> {
                         setState(() {
                           _textController.text.isEmpty
                               ? _validate = true
-                              : Provider.of<WeatherProvider>(context, listen: false)
+                              : Provider.of<WeatherProvider>(context,
+                                      listen: false)
                                   .searchWeather(location: value);
                         });
                       },
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),
