@@ -43,7 +43,7 @@ class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(builder: (context, weatherProv, _) {
-      DateTime now = DateTime.now();
+      // DateTime now = DateTime.now();
       // DateTime sunriseTime = DateTime(now.year, now.month, now.day, 6, 30);
       // DateTime sunsetTime = DateTime(now.year, now.month, now.day, 18, 0);
       return Container(
@@ -57,7 +57,7 @@ class WeatherInfo extends StatelessWidget {
             children: [
               _weatherInfoBuilder(
                 header: 'Sunrise',
-                body: '${weatherProv.currentWeather.sunrise}',
+                body: '${weatherProv.currentWeather.dailyTemp}',
                 svgPicture: const SunAnimation(svgloc: 'assets/images/sunn.svg',)
               ),
               Container(
@@ -71,6 +71,7 @@ class WeatherInfo extends StatelessWidget {
               ),
               _weatherInfoBuilder(
                 header: 'Sunset',
+                // body: "F",
                 body: '${weatherProv.currentWeather.sunset}',
                 svgPicture: const SunAnimation(svgloc: 'assets/images/moonn.svg',)
               ),

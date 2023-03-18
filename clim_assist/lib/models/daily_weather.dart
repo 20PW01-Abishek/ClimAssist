@@ -21,7 +21,7 @@ class DailyWeather with ChangeNotifier {
       condition: json['weather'][0]['main'],
       date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000, isUtc: true),
       sunrise: DateTime.fromMillisecondsSinceEpoch(json['city']['sunrise'] * 1000),
-      sunset: DateTime.fromMillisecondsSinceEpoch(json['city']['sunset'] * 1000),
+      sunset: DateTime.fromMillisecondsSinceEpoch(json['sys']['sunset'] * 1000),
     );
   }
 
@@ -30,6 +30,8 @@ class DailyWeather with ChangeNotifier {
       dailyTemp: json['temp']['day'],
       condition: json['weather'][0]['main'],
       date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000, isUtc: true),
+      sunrise: DateTime.fromMillisecondsSinceEpoch(json['city']['sunrise'] * 1000),
+      sunset: DateTime.fromMillisecondsSinceEpoch(json['sys']['sunset'] * 1000),
     );
   }
 
@@ -38,6 +40,8 @@ class DailyWeather with ChangeNotifier {
       dailyTemp: json['temp'],
       condition: json['weather'][0]['main'],
       date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000),
+      sunrise: DateTime.fromMillisecondsSinceEpoch(json['city']['sunrise'] * 1000),
+      sunset: DateTime.fromMillisecondsSinceEpoch(json['sys']['sunset'] * 1000),
     );
   }
 }

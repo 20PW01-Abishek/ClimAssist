@@ -74,24 +74,6 @@ class MainWeather extends StatelessWidget {
               toBeginningOfSentenceCase(weatherProv.weather.description) ?? '',
               style: _style1.copyWith(fontSize: 19),
             ),
-            // Spacer(),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Navigator.of(context).push(
-            //       MaterialPageRoute(builder: (context) => SunriseSunsetApp()),
-            //     );
-            //   },
-            //   style: ElevatedButton.styleFrom(
-            //     primary: ColorConstants.secondaryColor,
-            //     onPrimary: Colors.black,
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //   ),
-            //   child: Text('Sunset/Sunrise',
-            //       style: TextStyle(
-            //           color: ColorConstants.primaryColor, fontSize: 18)),
-            // ),
           ],
         ),
       );

@@ -13,7 +13,8 @@ class Weather with ChangeNotifier {
   final int humidity;
   final double windSpeed;
   final String cityName;
-  
+  final String sunRise;
+  final String sunSet;
 
   Weather({
     required this.temp,
@@ -28,6 +29,8 @@ class Weather with ChangeNotifier {
     required this.humidity,
     required this.windSpeed,
     required this.cityName,
+    required this.sunRise,
+    required this.sunSet,
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) {
@@ -44,6 +47,8 @@ class Weather with ChangeNotifier {
       humidity: json['main']['humidity'],
       windSpeed: (json['wind']['speed']).toDouble(),
       cityName: json['name'],
+      sunRise: (json['sys']['sunrise']).toString(),
+      sunSet: (json['sys']['sunset']).toString(),
     );
   }
 }

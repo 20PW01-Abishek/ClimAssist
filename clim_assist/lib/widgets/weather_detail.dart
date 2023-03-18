@@ -1,11 +1,12 @@
+import 'package:clim_assist/constants.dart';
+import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
-import '../constants.dart';
-import '../provider/weather_provider.dart';
 
 class WeatherDetail extends StatelessWidget {
+  const WeatherDetail({super.key});
+
   Widget _gridWeatherBuilder(String header, String body, IconData icon) {
     return Material(
       elevation: 5,
@@ -31,7 +32,7 @@ class WeatherDetail extends StatelessWidget {
                     header,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color:ColorConstants.fontColor,
+                      color: ColorConstants.fontColor,
                       fontSize: 18,
                     ),
                   ),
@@ -39,7 +40,7 @@ class WeatherDetail extends StatelessWidget {
                 FittedBox(
                   child: Text(
                     body,
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15,color:ColorConstants.fontColor),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15, color: ColorConstants.fontColor),
                   ),
                 ),
               ],
@@ -60,35 +61,51 @@ class WeatherDetail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               'Today Details',
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color:ColorConstants.fontColor
-              ),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: ColorConstants.fontColor),
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height / 3,
             width: MediaQuery.of(context).size.width,
             child: GridView(
-              padding: EdgeInsets.all(15),
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              padding: const EdgeInsets.all(15),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 250,
                 childAspectRatio: 2 / 1,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
               ),
               children: [
-                _gridWeatherBuilder('${weatherProv.weather.humidity}%',
-                    'Humidity', MdiIcons.waterPercent),
-                _gridWeatherBuilder('${weatherProv.weather.windSpeed} km/h',
-                    'Wind', MdiIcons.weatherWindy),
                 _gridWeatherBuilder(
-                    '${weatherProv.weather.feelsLike.toStringAsFixed(1)}°C',
-                    'Feels Like',
-                    MdiIcons.temperatureCelsius),
-                _gridWeatherBuilder('${weatherProv.weather.pressure} hPa',
-                    'Pressure', MdiIcons.arrowDownCircle),
+                  '${weatherProv.weather.humidity}%',
+                  'Humidity',
+                  MdiIcons.waterPercent,
+                ),
+                _gridWeatherBuilder(
+                  '${weatherProv.weather.windSpeed} km/h',
+                  'Wind',
+                  MdiIcons.weatherWindy,
+                ),
+                _gridWeatherBuilder(
+                  '${weatherProv.weather.feelsLike.toStringAsFixed(1)}°C',
+                  'Feels Like',
+                  MdiIcons.temperatureCelsius,
+                ),
+                _gridWeatherBuilder(
+                  '${weatherProv.weather.pressure} hPa',
+                  'Pressure',
+                  MdiIcons.arrowDownCircle,
+                ),
+                _gridWeatherBuilder(
+                  '${weatherProv.weather.sunrise}',
+                  'Sunrise',
+                  MdiIcons.weatherSunsetUp,
+                ),
+                _gridWeatherBuilder(
+                  '${weatherProv.weather.sunset}',
+                  'Sunset',
+                  MdiIcons.weatherSunsetDown,
+                ),
               ],
             ),
           ),

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:dio/dio.dart';
-import '../models/dailyWeather.dart';
+import '../models/daily_weather.dart';
 import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {

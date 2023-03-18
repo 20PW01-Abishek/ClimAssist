@@ -35,6 +35,13 @@ class MyApp extends StatelessWidget {
         ),
         home:
         SplashScreen()
+        // SunriseSunsetApp()
+        //  HomeScreen(),
+        // sunriseSunset(sunrise: sunrise, sunset: sunset)
+        // routes: {
+        //   weeklyWeather.routeName: (myCtx) => weeklyWeather(),
+        //   hourlyWeather.routeName: (myCtx) => hourlyWeather(),
+        // },
         // home:sunriseSunset(sunrise: , sunset: sunset)
       ),
     );
