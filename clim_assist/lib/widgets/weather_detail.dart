@@ -1,6 +1,7 @@
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -97,12 +98,12 @@ class WeatherDetail extends StatelessWidget {
                   MdiIcons.arrowDownCircle,
                 ),
                 _gridWeatherBuilder(
-                  '${weatherProv.weather.sunrise}',
+                  DateFormat('hh:mm a').format(DateTime.fromMillisecondsSinceEpoch(weatherProv.weather.sunRise * 1000)).toString(),
                   'Sunrise',
                   MdiIcons.weatherSunsetUp,
                 ),
                 _gridWeatherBuilder(
-                  '${weatherProv.weather.sunset}',
+                  DateFormat('hh:mm a').format(DateTime.fromMillisecondsSinceEpoch(weatherProv.weather.sunSet * 1000)).toString(),
                   'Sunset',
                   MdiIcons.weatherSunsetDown,
                 ),

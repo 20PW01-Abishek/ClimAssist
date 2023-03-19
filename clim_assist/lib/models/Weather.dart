@@ -13,8 +13,8 @@ class Weather with ChangeNotifier {
   final int humidity;
   final double windSpeed;
   final String cityName;
-  final String sunRise;
-  final String sunSet;
+  final int sunRise;
+  final int sunSet;
 
   Weather({
     required this.temp,
@@ -47,8 +47,8 @@ class Weather with ChangeNotifier {
       humidity: json['main']['humidity'],
       windSpeed: (json['wind']['speed']).toDouble(),
       cityName: json['name'],
-      sunRise: (json['sys']['sunrise']).toString(),
-      sunSet: (json['sys']['sunset']).toString(),
+      sunRise: (json['sys']['sunrise']),
+      sunSet: (json['sys']['sunset']),
     );
   }
 }

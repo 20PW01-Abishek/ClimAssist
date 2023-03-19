@@ -98,7 +98,7 @@ return Column(
             ],
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Consumer<WeatherProvider> (builder: (context, weatherProv,_) {
           return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
