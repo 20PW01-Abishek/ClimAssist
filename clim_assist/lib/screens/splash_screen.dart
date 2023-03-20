@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     
-      Future.delayed(Duration(seconds: 10)).then((_) {
+      Future.delayed(Duration(seconds: 5)).then((_) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => HomeScreen()),
       );
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/dark.jpg'),
+            image: AssetImage('assets/images/black.jpg'),
             fit: BoxFit.cover,
           ),
         ),
