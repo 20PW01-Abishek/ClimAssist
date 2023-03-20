@@ -99,25 +99,29 @@ class WeatherProvider with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    Uri dailyUrl = Uri.parse(
+    Uri forecast = Uri.parse(
       'https://api.openweathermap.org/data/2.5/forecast?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=$apiKey',
     );
     try {
-      final response = await http.get(dailyUrl);
-      inspect(response.body);
-      final dailyData = json.decode(response.body) as Map<String, dynamic>;
-      currentWeather = DailyWeather.fromJson(dailyData);
-      List<DailyWeather> tempHourly = [];
-      List<DailyWeather> temp24Hour = [];
-      List<DailyWeather> tempSevenDay = [];
-      List items = dailyData['daily'];
-      List itemsHourly = dailyData['hourly'];
-      tempHourly = itemsHourly.map((item) => DailyWeather.fromHourlyJson(item)).toList().skip(1).take(3).toList();
-      temp24Hour = itemsHourly.map((item) => DailyWeather.fromHourlyJson(item)).toList().skip(1).take(24).toList();
-      tempSevenDay = items.map((item) => DailyWeather.fromDailyJson(item)).toList().skip(1).take(7).toList();
-      hourlyWeather = tempHourly;
-      hourly24Weather = temp24Hour;
-      sevenDayWeather = tempSevenDay;
+      final res = await http.get(forecast);
+      final dailyData = json.decode(res.body) as Map<String, dynamic>;
+
+      hourlyWeather = [];
+      Map<String, dynamic> hour1 = dailyData["list"][1];
+      Map<String, dynamic> hour2 = dailyData["list"][2];
+      Map<String, dynamic> hour3 = dailyData["list"][3];
+      DailyWeather h1 = DailyWeather.fromDailyJson(hour1);
+      DailyWeather h2 = DailyWeather.fromDailyJson(hour2);
+      DailyWeather h3 = DailyWeather.fromDailyJson(hour3);
+      hourlyWeather.add(h1);
+      hourlyWeather.add(h2);
+      hourlyWeather.add(h3);
+
+      for (int i = 1; i <= 3; i++) {
+        Map<String, dynamic> hour = dailyData["list"][i];
+        DailyWeather h = DailyWeather.fromDailyJson(hour);
+        hourly24Weather.add(h);
+      }
     } catch (error) {
       isRequestError = true;
       rethrow;

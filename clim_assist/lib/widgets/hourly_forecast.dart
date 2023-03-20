@@ -11,10 +11,10 @@ class HourlyForecast extends StatelessWidget {
 
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final currentTime = weather.date;
-    final hours = DateFormat.Hm().format(currentTime);
+    final hours = currentTime.toString();
     return Container(
       height: 175,
-      
+      width: 100,
       padding: const EdgeInsets.all(5.0),
       child: Material(
         elevation: 5,
@@ -41,7 +41,7 @@ class HourlyForecast extends StatelessWidget {
                     '${weather.condition}',
                     50,
                   ),
-                  Container(
+                  SizedBox(
                     width: 80,
                     child: Text(
                       "${weather.dailyTemp.toStringAsFixed(1)}°C",
@@ -64,7 +64,7 @@ class HourlyForecast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-return Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -82,7 +82,7 @@ return Column(
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: ColorConstants.secondaryColor,
+                  backgroundColor: ColorConstants.secondaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -99,13 +99,13 @@ return Column(
           ),
         ),
         const SizedBox(height: 5),
-        Consumer<WeatherProvider> (builder: (context, weatherProv,_) {
-          return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: weatherProv.hourlyWeather
-                  .map((item) => hourlyWidget(item, context))
-                  .toList());
-        }),
+        Consumer<WeatherProvider>(
+          builder: (context, weatherProv, _) {
+            return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: weatherProv.hourlyWeather.map((item) => hourlyWidget(item, context)).toList());
+          },
+        ),
       ],
     );
   }

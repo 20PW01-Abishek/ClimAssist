@@ -5,7 +5,6 @@ import '../constants.dart';
 import '../utils/utils.dart';
 import '../provider/weather_provider.dart';
 
-// ignore: must_be_immutable
 class HourlyWeather extends StatelessWidget {
   static const routeName = '/hourlyWeather';
   dynamic weather;
@@ -32,10 +31,10 @@ class HourlyWeather extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 '${weather.dailyTemp.toStringAsFixed(1)}°',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
                 ),
@@ -63,11 +62,11 @@ class HourlyWeather extends StatelessWidget {
             style: TextStyle(color: ColorConstants.fontColor),
           ),
         ),
-        body: Container(
+        body: SizedBox(
           height: mediaQuery.size.height,
           width: mediaQuery.size.width,
           child: ListView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             children: weatherData.hourly24Weather
                 .map((item) => hourlyWidget(item, context))
                 .toList(),
