@@ -1,26 +1,24 @@
-import 'package:clim_assist/widgets/weather_info.dart';
+import 'package:clim_assist/widgets/seven_day_forecast.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../provider/weather_provider.dart';
 import '../widgets/fade_in.dart';
 import '../widgets/hourly_forecast.dart';
-import '../widgets/location_error.dart';
 import '../widgets/main_weather.dart';
-import '../widgets/weather_request_error.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/weather_detail.dart';
-import '../widgets/seven_day_forecast.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
+
+  const HomeScreen({super.key});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   bool _isLoading = false;
 
   @override
@@ -103,11 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   FadeIn(
                                     curve: Curves.easeIn,
-                                    duration: Duration(milliseconds: 500),
-                                    child: WeatherInfo(),
-                                  ),
-                                  FadeIn(
-                                    curve: Curves.easeIn,
                                     duration: Duration(milliseconds: 750),
                                     child: HourlyForecast(),
                                   ),
@@ -116,13 +109,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             ListView(
                               padding: const EdgeInsets.all(10),
-                              children: [
+                              children: const [
                                 FadeIn(
                                   curve: Curves.easeIn,
                                   duration: Duration(milliseconds: 250),
-                                  child: sevenDayForecast(),
+                                  child: SevenDayForecast(),
                                 ),
-                                const SizedBox(height: 16.0),
+                                SizedBox(height: 16.0),
                                 FadeIn(
                                   curve: Curves.easeIn,
                                   duration: Duration(milliseconds: 500),

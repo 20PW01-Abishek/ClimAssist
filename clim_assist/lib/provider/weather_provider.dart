@@ -10,7 +10,6 @@ import '../models/daily_weather.dart';
 import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {
-
   String apiKey = '4aaf3f194039c2eae46d6693c587b8d8';
   LatLng? currentLocation;
   late Weather weather;
@@ -78,7 +77,6 @@ class WeatherProvider with ChangeNotifier {
       addFavoriteLocation(location);
     }
   }
-  
 
   Future<void> getCurrentWeather(LatLng location) async {
     Uri url = Uri.parse(
@@ -89,9 +87,8 @@ class WeatherProvider with ChangeNotifier {
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       weather = Weather.fromJson(extractedData);
     } catch (error) {
-      print(error);
-      this.isRequestError = true;
-      throw error;
+      isRequestError = true;
+      rethrow;
     } finally {
       isLoading = false;
       notifyListeners();
@@ -103,7 +100,7 @@ class WeatherProvider with ChangeNotifier {
     notifyListeners();
 
     Uri dailyUrl = Uri.parse(
-      'https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,current&appid=$apiKey',
+      'https://api.openweathermap.org/data/2.5/forecast?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=$apiKey',
     );
     try {
       final response = await http.get(dailyUrl);
@@ -115,33 +112,15 @@ class WeatherProvider with ChangeNotifier {
       List<DailyWeather> tempSevenDay = [];
       List items = dailyData['daily'];
       List itemsHourly = dailyData['hourly'];
-      tempHourly = itemsHourly
-          .map((item) => DailyWeather.fromHourlyJson(item))
-          .toList()
-          .skip(1)
-          .take(3)
-          .toList();
-        
-
-      temp24Hour = itemsHourly
-          .map((item) => DailyWeather.fromHourlyJson(item))
-          .toList()
-          .skip(1)
-          .take(24)
-          .toList();
-      tempSevenDay = items
-          .map((item) => DailyWeather.fromDailyJson(item))
-          .toList()
-          .skip(1)
-          .take(7)
-          .toList();
+      tempHourly = itemsHourly.map((item) => DailyWeather.fromHourlyJson(item)).toList().skip(1).take(3).toList();
+      temp24Hour = itemsHourly.map((item) => DailyWeather.fromHourlyJson(item)).toList().skip(1).take(24).toList();
+      tempSevenDay = items.map((item) => DailyWeather.fromDailyJson(item)).toList().skip(1).take(7).toList();
       hourlyWeather = tempHourly;
       hourly24Weather = temp24Hour;
       sevenDayWeather = tempSevenDay;
     } catch (error) {
-      print(error);
-      this.isRequestError = true;
-      throw error;
+      isRequestError = true;
+      rethrow;
     } finally {
       isLoading = false;
       notifyListeners();
@@ -157,8 +136,8 @@ class WeatherProvider with ChangeNotifier {
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       weather = Weather.fromJson(extractedData);
     } catch (error) {
-      this.isRequestError = true;
-      throw error;
+      isRequestError = true;
+      rethrow;
     }
   }
 

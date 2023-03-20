@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../provider/weather_provider.dart';
 
-class sevenDayForecast extends StatelessWidget {
-  const sevenDayForecast({super.key});
+class SevenDayForecast extends StatelessWidget {
+  const SevenDayForecast({super.key});
 
   Widget dayWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = DateFormat('').format(weather.date);
@@ -34,7 +34,7 @@ class sevenDayForecast extends StatelessWidget {
           ),
           Text(
             '${weather.condition}',
-            style: TextStyle(color: ColorConstants.fontColor),
+            style: const TextStyle(color: Colors.white),
           ),
         ],
       ),

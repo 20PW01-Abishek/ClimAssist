@@ -13,7 +13,7 @@ Color hexToColor(String hex) {
 class ColorConstants {
   static Color darkScaffoldBackgroundColor = hexToColor('#2F2E2E');
   static Color secondaryAppColor = hexToColor('#5E92F3');
-  static Color primaryColor = const Color.fromARGB(255, 0, 45, 83);
+  static Color primaryColor = const Color.fromARGB(255, 2, 41, 74);
   static Color secondaryColor = hexToColor('#EDA329');
   static Color fontColor = Colors.white;
   static Color secondaryDarkAppColor = Colors.white;
