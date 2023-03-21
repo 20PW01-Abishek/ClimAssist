@@ -52,7 +52,7 @@ class SevenDayForecast extends StatelessWidget {
             left: 20,
           ),
           child: Text(
-            'Next 7 days',
+            'Next 5 days',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w400,

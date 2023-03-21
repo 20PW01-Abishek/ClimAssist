@@ -122,6 +122,7 @@ class WeatherProvider with ChangeNotifier {
         DailyWeather h = DailyWeather.fromDailyJson(hour);
         hourly24Weather.add(h);
       }
+      
     } catch (error) {
       isRequestError = true;
       rethrow;

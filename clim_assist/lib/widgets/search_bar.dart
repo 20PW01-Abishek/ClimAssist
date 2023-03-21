@@ -1,4 +1,5 @@
 import 'package:clim_assist/constants.dart';
+import 'package:clim_assist/widgets/fetch_cities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   final _textController = TextEditingController();
   bool _validate = false;
+  String? userSelected;
 
   @override
   void dispose() {
@@ -42,34 +44,38 @@ class _SearchBarState extends State<SearchBar> {
                     suggestionsBoxDecoration: SuggestionsBoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    suggestionsCallback: (pattern) async {
-                      return await Provider.of<WeatherProvider>(context,
-                              listen: false)
-                          .searchLocations(query: pattern);
+                    suggestionsCallback: (value) {
+                      return mySuggestions.getSuggestions(value);
                     },
-                    itemBuilder: (context, suggestion) {
-                      return ListTile(
-                        title: Text(suggestion),
-                        trailing: IconButton(
-                          icon: Icon(
-                            weatherProv.isFavoriteLocation(suggestion)
-                                ? Icons.favorite
-                                : Icons.favorite_border,
+                    itemBuilder: (context, String suggestion) {
+                      return Row(
+                        children: [
+                          const SizedBox(
+                            width: 10,
                           ),
-                          color: ColorConstants.secondaryColor,
-                          onPressed: () {
-                            // Navigate to the FavoritesScreen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => FavoritesScreen()),
-                            );
-                          },
-                        ),
+                          const Icon(
+                            Icons.refresh,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                suggestion,
+                                maxLines: 1,
+                                // style: TextStyle(color: Colors.red),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          )
+                        ],
                       );
                     },
-                    onSuggestionSelected: (suggestion) {
-                      _textController.text = suggestion;
+                    onSuggestionSelected: (String suggestion) {
+                      userSelected = suggestion;
                       Provider.of<WeatherProvider>(context, listen: false)
                           .searchWeather(location: suggestion);
                     },
@@ -100,13 +106,11 @@ class _SearchBarState extends State<SearchBar> {
                         hintText: "Search Location",
                       ),
                       onSubmitted: (value) {
-                        setState(() {
-                          _textController.text.isEmpty
-                              ? _validate = true
-                              : Provider.of<WeatherProvider>(context,
-                                      listen: false)
-                                  .searchWeather(location: value);
-                        });
+                        _textController.text.isEmpty
+                            ? _validate = true
+                            : Provider.of<WeatherProvider>(context,
+                                    listen: false)
+                                .searchWeather(location: value);
                       },
                     ),
                   ),
