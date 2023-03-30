@@ -36,8 +36,6 @@ class FavoritesScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 // Get the current location
                 final location = favoriteLocations[index];
-
-                // Display the location and a button to remove it from favorites
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,

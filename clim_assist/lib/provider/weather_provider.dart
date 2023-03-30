@@ -56,6 +56,21 @@ class WeatherProvider with ChangeNotifier {
     }
   }
 
+  List<String> _favorites = [];
+
+void addToFavorites(String location) {
+  _favorites.add(location);
+}
+
+void removeFromFavorites(String location) {
+  _favorites.remove(location);
+}
+
+bool isFavorite(String location) {
+  return _favorites.contains(location);
+}
+
+
   // Remove a location from favorites
   void removeFavoriteLocation(String location) {
     if (_favoriteLocations.contains(location)) {
@@ -177,3 +192,13 @@ class WeatherProvider with ChangeNotifier {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
