@@ -1,18 +1,15 @@
-
-
-
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/widgets/fetch_cities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:provider/provider.dart';
 import '../provider/weather_provider.dart';
-import 'package:autocomplete_textfield/autocomplete_textfield.dart';
-
-import '../screens/favorites_screen.dart';
 
 class SearchBar extends StatefulWidget {
+  const SearchBar({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SearchBarState createState() => _SearchBarState();
 }
 
@@ -51,28 +48,24 @@ class _SearchBarState extends State<SearchBar> {
                       return mySuggestions.getSuggestions(value);
                     },
                     itemBuilder: (context, String suggestion) {
-                      final isFavorite =
-      Provider.of<WeatherProvider>(context, listen: false)
-          .isFavorite(suggestion);
+                      final isFavorite = Provider.of<WeatherProvider>(context, listen: false).isFavorite(suggestion);
                       return Row(
                         children: [
                           IconButton(
-        icon: Icon(
-          isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: isFavorite ? Colors.red : Colors.grey,
-        ),
-        onPressed: () {
-          setState(() {
-            if (isFavorite) {
-              Provider.of<WeatherProvider>(context, listen: false)
-                  .removeFromFavorites(suggestion);
-            } else {
-              Provider.of<WeatherProvider>(context, listen: false)
-                  .addToFavorites(suggestion);
-            }
-          });
-        },
-      ),
+                            icon: Icon(
+                              isFavorite ? Icons.favorite : Icons.favorite_border,
+                              color: isFavorite ? Colors.red : Colors.grey,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                if (isFavorite) {
+                                  Provider.of<WeatherProvider>(context, listen: false).removeFromFavorites(suggestion);
+                                } else {
+                                  Provider.of<WeatherProvider>(context, listen: false).addToFavorites(suggestion);
+                                }
+                              });
+                            },
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -99,8 +92,7 @@ class _SearchBarState extends State<SearchBar> {
                     },
                     onSuggestionSelected: (String suggestion) {
                       userSelected = suggestion;
-                      Provider.of<WeatherProvider>(context, listen: false)
-                          .searchWeather(location: suggestion);
+                      Provider.of<WeatherProvider>(context, listen: false).searchWeather(location: suggestion);
                     },
                     textFieldConfiguration: TextFieldConfiguration(
                       enabled: !weatherProv.isLoading,
@@ -131,9 +123,7 @@ class _SearchBarState extends State<SearchBar> {
                       onSubmitted: (value) {
                         _textController.text.isEmpty
                             ? _validate = true
-                            : Provider.of<WeatherProvider>(context,
-                                    listen: false)
-                                .searchWeather(location: value);
+                            : Provider.of<WeatherProvider>(context, listen: false).searchWeather(location: value);
                       },
                     ),
                   ),

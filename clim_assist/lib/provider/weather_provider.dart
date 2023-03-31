@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
-
+import 'package:clim_assist/models/weather.dart';
+import 'package:clim_assist/models/daily_weather.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:dio/dio.dart';
-import '../models/daily_weather.dart';
-import '../models/weather.dart';
 
 class WeatherProvider with ChangeNotifier {
   String apiKey = '4aaf3f194039c2eae46d6693c587b8d8';
@@ -17,7 +15,6 @@ class WeatherProvider with ChangeNotifier {
   List<DailyWeather> hourlyWeather = [];
   List<DailyWeather> hourly24Weather = [];
   List<DailyWeather> fiveDayWeather = [];
-  List<DailyWeather> sevenDayWeather = [];
   bool isLoading = false;
   bool isRequestError = false;
   bool isLocationError = false;
@@ -44,8 +41,6 @@ class WeatherProvider with ChangeNotifier {
   }
 
   List<String> _favoriteLocations = [];
-
-  // Getter for favorite locations
   List<String> get favoriteLocations => _favoriteLocations;
 
   // Add a location to favorites
@@ -58,18 +53,17 @@ class WeatherProvider with ChangeNotifier {
 
   List<String> _favorites = [];
 
-void addToFavorites(String location) {
-  _favorites.add(location);
-}
+  void addToFavorites(String location) {
+    _favorites.add(location);
+  }
 
-void removeFromFavorites(String location) {
-  _favorites.remove(location);
-}
+  void removeFromFavorites(String location) {
+    _favorites.remove(location);
+  }
 
-bool isFavorite(String location) {
-  return _favorites.contains(location);
-}
-
+  bool isFavorite(String location) {
+    return _favorites.contains(location);
+  }
 
   // Remove a location from favorites
   void removeFavoriteLocation(String location) {
@@ -122,22 +116,18 @@ bool isFavorite(String location) {
       final dailyData = json.decode(res.body) as Map<String, dynamic>;
 
       hourlyWeather = [];
-      Map<String, dynamic> hour1 = dailyData["list"][1];
-      Map<String, dynamic> hour2 = dailyData["list"][2];
-      Map<String, dynamic> hour3 = dailyData["list"][3];
-      DailyWeather h1 = DailyWeather.fromDailyJson(hour1);
-      DailyWeather h2 = DailyWeather.fromDailyJson(hour2);
-      DailyWeather h3 = DailyWeather.fromDailyJson(hour3);
-      hourlyWeather.add(h1);
-      hourlyWeather.add(h2);
-      hourlyWeather.add(h3);
-
       for (int i = 1; i <= 3; i++) {
-        Map<String, dynamic> hour = dailyData["list"][i];
+        Map<String, dynamic> hour = dailyData["list"][i * 8];
         DailyWeather h = DailyWeather.fromDailyJson(hour);
-        hourly24Weather.add(h);
+        hourlyWeather.add(h);
       }
-      
+
+      fiveDayWeather = [];
+      for (int i = 0; i < 5; i++) {
+        Map<String, dynamic> day = dailyData["list"][i * 8];
+        DailyWeather d = DailyWeather.fromDailyJson(day);
+        fiveDayWeather.add(d);
+      }
     } catch (error) {
       isRequestError = true;
       rethrow;
@@ -187,18 +177,7 @@ bool isFavorite(String location) {
       });
       return locations;
     } catch (e) {
-      print(e);
       return [];
     }
   }
 }
-
-
-
-
-
-
-
-
-
-

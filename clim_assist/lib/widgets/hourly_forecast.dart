@@ -1,16 +1,15 @@
 import 'package:clim_assist/constants.dart';
+import 'package:clim_assist/provider/weather_provider.dart';
+import 'package:clim_assist/screens/hourly_weather.dart';
+import 'package:clim_assist/utils/utils.dart';
 import 'package:flutter/material.dart';
-import '../provider/weather_provider.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../screens/hourly_weather.dart';
-import '../utils/utils.dart';
 
 class HourlyForecast extends StatelessWidget {
   const HourlyForecast({super.key});
 
   Widget hourlyWidget(dynamic weather, BuildContext context) {
-    final currentTime = weather.date;
+    final currentTime = weather.date.toString();
     final hours = currentTime.toString();
     return Container(
       height: 175,

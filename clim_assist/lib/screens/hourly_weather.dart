@@ -5,6 +5,7 @@ import '../constants.dart';
 import '../utils/utils.dart';
 import '../provider/weather_provider.dart';
 
+// ignore: must_be_immutable
 class HourlyWeather extends StatelessWidget {
   static const routeName = '/hourlyWeather';
   dynamic weather;

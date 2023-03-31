@@ -1,19 +1,20 @@
-import 'package:clim_assist/widgets/seven_day_forecast.dart';
+import 'package:clim_assist/provider/weather_provider.dart';
+import 'package:clim_assist/widgets/fade_in.dart';
+import 'package:clim_assist/widgets/five_day_forecast.dart';
+import 'package:clim_assist/widgets/hourly_forecast.dart';
+import 'package:clim_assist/widgets/main_weather.dart';
+import 'package:clim_assist/widgets/search_bar.dart';
+import 'package:clim_assist/widgets/weather_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../provider/weather_provider.dart';
-import '../widgets/fade_in.dart';
-import '../widgets/hourly_forecast.dart';
-import '../widgets/main_weather.dart';
-import '../widgets/search_bar.dart';
-import '../widgets/weather_detail.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
 
   const HomeScreen({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -41,8 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _refreshData(BuildContext context) async {
-    await Provider.of<WeatherProvider>(context, listen: false)
-        .getWeatherData(isRefresh: true);
+    await Provider.of<WeatherProvider>(context, listen: false).getWeatherData(isRefresh: true);
   }
 
   @override
@@ -53,16 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Consumer<WeatherProvider>(
           builder: (context, weatherProv, _) {
-            // if (weatherProv.isLocationError) {
-            //   return LocationError();
-            // }
-            // if (weatherProv.isRequestError) {
-            //   return RequestError();
-            // }
-
             return Column(
               children: [
-                SearchBar(),
+                const SearchBar(),
                 Center(
                   child: SmoothPageIndicator(
                     controller: _pageController,
@@ -85,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     : Expanded(
                         child: PageView(
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           controller: _pageController,
                           children: [
                             RefreshIndicator(
@@ -96,10 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   FadeIn(
                                     curve: Curves.easeIn,
-                                    duration: Duration(milliseconds: 250),
+                                    duration: const Duration(milliseconds: 250),
                                     child: MainWeather(),
                                   ),
-                                  FadeIn(
+                                  const FadeIn(
                                     curve: Curves.easeIn,
                                     duration: Duration(milliseconds: 750),
                                     child: HourlyForecast(),
@@ -113,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 FadeIn(
                                   curve: Curves.easeIn,
                                   duration: Duration(milliseconds: 250),
-                                  child: SevenDayForecast(),
+                                  child: FiveDayForecast(),
                                 ),
                                 SizedBox(height: 16.0),
                                 FadeIn(

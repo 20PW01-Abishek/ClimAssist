@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  // const SplashScreen({super.key});
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -14,10 +14,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    
-      Future.delayed(Duration(seconds: 3)).then((_) {
+
+    Future.delayed(
+      const Duration(seconds: 3),
+    ).then((_) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => HomeScreen()),
+        MaterialPageRoute(
+          builder: (_) => const HomeScreen(),
+        ),
       );
     });
   }
@@ -36,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'ClimAssist',
                 style: TextStyle(
                   fontSize: 36,
@@ -44,11 +48,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 20),
-              Lottie.network(
-                  'https://assets6.lottiefiles.com/packages/lf20_bt5wpygx/loading_data.json'),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bt5wpygx/loading_data.json'),
+              const SizedBox(height: 20),
+              const Text(
                 'Loading...',
                 style: TextStyle(
                   fontSize: 18,

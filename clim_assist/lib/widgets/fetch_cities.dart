@@ -5,7 +5,7 @@ class Cities {
   Future<List<String>> getCities() async {
   List<List<dynamic>> csvTable = [];
   String csvData = await rootBundle.loadString('assets/worldcities.csv');
-  csvTable = CsvToListConverter().convert(csvData);
+  csvTable = const CsvToListConverter().convert(csvData);
   List<String> cities = [];
   for (List<dynamic> row in csvTable) {
     cities.add(row[0].toString());
