@@ -75,7 +75,7 @@ class FiveDayForecast extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.all(15),
+          margin: const EdgeInsets.all(10),
           child: Material(
             elevation: 5,
             borderRadius: BorderRadius.circular(15),
@@ -84,44 +84,44 @@ class FiveDayForecast extends StatelessWidget {
               padding: const EdgeInsets.all(25),
               shrinkWrap: true,
               children: [
-                // Consumer<WeatherProvider>(
-                //   builder: (context, weatherProv, _) {
-                //     return Row(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         Column(
-                //           crossAxisAlignment: CrossAxisAlignment.start,
-                //           children: [
-                //             Text(
-                //               'Today',
-                //               style: TextStyle(
-                //                 color: ColorConstants.fontColor,
-                //                 fontSize: 14,
-                //                 fontWeight: FontWeight.w400,
-                //               ),
-                //             ),
-                //             Text(
-                //               '${weatherProv.weather.temp.toStringAsFixed(1)}°C',
-                //               style: const TextStyle(
-                //                 fontSize: 30,
-                //                 color: Colors.white,
-                //                 fontWeight: FontWeight.w400,
-                //               ),
-                //             ),
-                //             MapString.mapInputToWeather(
-                //               context,
-                //               weatherProv.weather.currently,
-                //             )
-                //           ],
-                //         ),
-                //         Padding(
-                //           padding: const EdgeInsets.only(bottom: 20),
-                //           child: MapString.mapStringToIcon(context, weatherProv.weather.currently, 45),
-                //         )
-                //       ],
-                //     );
-                //   },
-                // ),
+                Consumer<WeatherProvider>(
+                  builder: (context, weatherProv, _) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Today",
+                              style: TextStyle(
+                                color: ColorConstants.fontColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              '${weatherProv.weather.temp.toStringAsFixed(1)}°C',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            MapString.mapInputToWeather(
+                              context,
+                              weatherProv.weather.currently,
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: MapString.mapStringToIcon(context, weatherProv.weather.currently, 45),
+                        )
+                      ],
+                    );
+                  },
+                ),
                 const SizedBox(height: 15),
                 Consumer<WeatherProvider>(
                   builder: (context, weatherProv, _) {

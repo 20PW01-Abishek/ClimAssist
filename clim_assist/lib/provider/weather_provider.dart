@@ -117,8 +117,8 @@ class WeatherProvider with ChangeNotifier {
 
       hourlyWeather = [];
       for (int i = 1; i <= 3; i++) {
-        Map<String, dynamic> hour = dailyData["list"][i * 8];
-        DailyWeather h = DailyWeather.fromDailyJson(hour);
+        Map<String, dynamic> hour = dailyData["list"][i];
+        DailyWeather h = DailyWeather.fromHourlyJson(hour);
         hourlyWeather.add(h);
       }
 
