@@ -92,7 +92,7 @@ class HourlyForecast extends StatelessWidget {
                   style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
-                 Navigator.push(context,MaterialPageRoute(builder: (context) =>  FavoritesScreen()));
+                 Navigator.push(context,MaterialPageRoute(builder: (context) =>FavoritesScreen()));
                 },
               ),
             ],
