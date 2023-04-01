@@ -123,7 +123,7 @@ class WeatherProvider with ChangeNotifier {
       }
 
       fiveDayWeather = [];
-      for (int i = 0; i < 5; i++) {
+      for (int i = 1; i < 6; i++) {
         Map<String, dynamic> day = dailyData["list"][i * 8];
         DailyWeather d = DailyWeather.fromDailyJson(day);
         fiveDayWeather.add(d);

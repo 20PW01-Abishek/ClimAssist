@@ -10,48 +10,53 @@ class FiveDayForecast extends StatelessWidget {
   Widget dayWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = weather.date.toString();
     final temp = '${weather.dailyTemp}°C';
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 7),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                dayOfWeek,
-                style: TextStyle(
-                  color: ColorConstants.fontColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              dayOfWeek,
+              style: TextStyle(
+                color: ColorConstants.fontColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
               ),
-              Text(
-                temp,
-                style: const TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              Text(
-                '${weather.condition}',
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: MapString.mapStringToIcon(
-              context,
-              '${weather.condition}',
-              45,
             ),
+            Text(
+              temp,
+              style: const TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Text(
+              '${weather.condition}',
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+              width: 100,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 15,
+          width: 145,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: MapString.mapStringToIcon(
+            context,
+            '${weather.condition}',
+            45,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -83,6 +88,7 @@ class FiveDayForecast extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(25),
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Consumer<WeatherProvider>(
                   builder: (context, weatherProv, _) {

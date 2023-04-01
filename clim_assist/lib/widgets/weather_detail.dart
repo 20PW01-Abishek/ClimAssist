@@ -69,6 +69,7 @@ class WeatherDetail extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 3,
             width: MediaQuery.of(context).size.width,
             child: GridView(
+              physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(15),
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 250,
