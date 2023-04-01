@@ -6,7 +6,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:provider/provider.dart';
 
 class WeatherDetail extends StatelessWidget {
-  const WeatherDetail({super.key});
+  // const WeatherDetail({super.key});
 
   Widget _gridWeatherBuilder(String header, String body, IconData icon) {
     return Material(

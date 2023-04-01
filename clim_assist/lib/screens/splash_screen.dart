@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  // const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ).then((_) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) =>  HomeScreen(),
         ),
       );
     });
@@ -49,7 +49,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bt5wpygx/loading_data.json'),
+              // Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bt5wpygx/loading_data.json'),
+              Lottie.asset(""),
               const SizedBox(height: 20),
               const Text(
                 'Loading...',

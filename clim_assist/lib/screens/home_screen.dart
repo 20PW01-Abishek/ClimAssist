@@ -12,7 +12,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
 
-  const HomeScreen({super.key});
+  // const HomeScreen({super.key});
   @override
   // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, weatherProv, _) {
             return Column(
               children: [
-                const SearchBar(),
+               SearchBar(),
                 Center(
                   child: SmoothPageIndicator(
                     controller: _pageController,
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     duration: const Duration(milliseconds: 250),
                                     child: MainWeather(),
                                   ),
-                                  const FadeIn(
+                                   FadeIn(
                                     curve: Curves.easeIn,
                                     duration: Duration(milliseconds: 750),
                                     child: HourlyForecast(),
@@ -101,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             ListView(
-                              padding: const EdgeInsets.all(10),
-                              children: const [
+                              padding:  EdgeInsets.all(10),
+                              children:  [
                                 FadeIn(
                                   curve: Curves.easeIn,
                                   duration: Duration(milliseconds: 250),

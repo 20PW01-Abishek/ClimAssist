@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../provider/weather_provider.dart';
 
 class FiveDayForecast extends StatelessWidget {
-  const FiveDayForecast({super.key});
+  // const FiveDayForecast({super.key});
 
   Widget dayWidget(dynamic weather, BuildContext context) {
     final dayOfWeek = weather.date.toString();
@@ -26,7 +26,7 @@ class FiveDayForecast extends StatelessWidget {
             ),
             Text(
               temp,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
                 fontWeight: FontWeight.w400,
@@ -66,7 +66,7 @@ class FiveDayForecast extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(
+          padding:  EdgeInsets.only(
             top: 15,
             left: 20,
           ),
@@ -80,15 +80,15 @@ class FiveDayForecast extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.all(10),
+          margin:  EdgeInsets.all(10),
           child: Material(
             elevation: 5,
             borderRadius: BorderRadius.circular(15),
             color: ColorConstants.primaryColor,
             child: ListView(
-              padding: const EdgeInsets.all(25),
+              padding:  EdgeInsets.all(25),
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              physics:  NeverScrollableScrollPhysics(),
               children: [
                 Consumer<WeatherProvider>(
                   builder: (context, weatherProv, _) {
@@ -108,7 +108,7 @@ class FiveDayForecast extends StatelessWidget {
                             ),
                             Text(
                               '${weatherProv.weather.temp.toStringAsFixed(1)}°C',
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontSize: 30,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400,
@@ -121,14 +121,14 @@ class FiveDayForecast extends StatelessWidget {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
+                          padding:  EdgeInsets.only(bottom: 20),
                           child: MapString.mapStringToIcon(context, weatherProv.weather.currently, 45),
                         )
                       ],
                     );
                   },
                 ),
-                const SizedBox(height: 15),
+                 SizedBox(height: 15),
                 Consumer<WeatherProvider>(
                   builder: (context, weatherProv, _) {
                     return SingleChildScrollView(

@@ -10,7 +10,7 @@ class HourlyWeather extends StatelessWidget {
   static const routeName = '/hourlyWeather';
   dynamic weather;
 
-  HourlyWeather({super.key});
+  // HourlyWeather({super.key});
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final time = weather.date;
     final hours = DateFormat.Hm().format(time);

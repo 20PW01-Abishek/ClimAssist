@@ -4,7 +4,7 @@ import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:provider/provider.dart';
 
 class RequestError extends StatelessWidget {
-  const RequestError({super.key});
+  // const RequestError({super.key});
 
   @override
   Widget build(BuildContext context) {

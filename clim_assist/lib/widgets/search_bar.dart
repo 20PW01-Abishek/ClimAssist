@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../provider/weather_provider.dart';
 
 class SearchBar extends StatefulWidget {
-  const SearchBar({super.key});
+  // const SearchBar({super.key});
 
   @override
   SearchBarState createState() => SearchBarState();

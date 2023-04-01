@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HourlyForecast extends StatelessWidget {
-  const HourlyForecast({super.key});
+  // const HourlyForecast({super.key});
 
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final currentTime = weather.date.toString();
