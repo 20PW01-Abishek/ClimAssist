@@ -1,5 +1,6 @@
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/provider/weather_provider.dart';
+import 'package:clim_assist/screens/favorites_screen.dart';
 import 'package:clim_assist/screens/hourly_weather.dart';
 import 'package:clim_assist/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -87,11 +88,11 @@ class HourlyForecast extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'See More',
+                  'View Favorites',
                   style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(HourlyWeather.routeName);
+                 Navigator.push(context,MaterialPageRoute(builder: (context) =>  FavoritesScreen()));
                 },
               ),
             ],

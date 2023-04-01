@@ -40,45 +40,54 @@ class WeatherProvider with ChangeNotifier {
     );
   }
 
-  List<String> _favoriteLocations = [];
-  List<String> get favoriteLocations => _favoriteLocations;
+  List<String> favoriteLocations = [];
+  // ignore: recursive_getters
+  // List<String> get favoriteLocations => favoriteLocations;
 
-  // Add a location to favorites
   void addFavoriteLocation(String location) {
-    if (!_favoriteLocations.contains(location)) {
-      _favoriteLocations.add(location);
+    if (!favoriteLocations.contains(location)) {
+      favoriteLocations.add(location);
       notifyListeners();
+    }
+    for(int i=0; i<favoriteLocations.length; i++) {
+      print(favoriteLocations[i]);
     }
   }
 
-  List<String> _favorites = [];
+  List<String> favorites = [];
 
   void addToFavorites(String location) {
-    _favorites.add(location);
+    favorites.add(location);
+    for(int i=0; i<favorites.length; i++) {
+      print(favorites[i]);
+    }
+    for(int i=0; i<favoriteLocations.length; i++) {
+      print(favoriteLocations[i]);
+    }
   }
 
   void removeFromFavorites(String location) {
-    _favorites.remove(location);
+    favorites.remove(location);
   }
 
   bool isFavorite(String location) {
-    return _favorites.contains(location);
+    return favorites.contains(location);
   }
 
-  // Remove a location from favorites
+  
   void removeFavoriteLocation(String location) {
-    if (_favoriteLocations.contains(location)) {
-      _favoriteLocations.remove(location);
+    if (favoriteLocations.contains(location)) {
+      favoriteLocations.remove(location);
       notifyListeners();
     }
   }
 
-  // Check if a location is a favorite
+  
   bool isFavoriteLocation(String location) {
-    return _favoriteLocations.contains(location);
+    return favoriteLocations.contains(location);
   }
 
-  // Toggle a location's favorite status
+  
   void toggleFavoriteLocation(String location) {
     if (isFavoriteLocation(location)) {
       removeFavoriteLocation(location);
