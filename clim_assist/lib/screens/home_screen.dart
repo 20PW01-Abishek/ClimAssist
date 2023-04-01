@@ -86,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListView(
                                 padding: const EdgeInsets.all(10),
                                 shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
                                 children: [
                                   FadeIn(
                                     curve: Curves.easeIn,
