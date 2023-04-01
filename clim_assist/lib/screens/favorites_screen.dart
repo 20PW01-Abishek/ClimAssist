@@ -4,21 +4,20 @@ import '../provider/weather_provider.dart';
 import '../constants.dart';
 
 class FavoritesScreen extends StatelessWidget {
+  const FavoritesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: const Text('Favorites'),
         backgroundColor: ColorConstants.primaryColor,
       ),
       body: Consumer<WeatherProvider>(
         builder: (context, weatherProv, _) {
-          // Get the list of favorite locations
-          final favoriteLocations = weatherProv.favoriteLocations;
+          final favoriteLocations = weatherProv.favorites;
 
-          // Check if there are any favorite locations
           if (favoriteLocations.isEmpty) {
-            // Display a message if there are no favorite locations
             return Center(
               child: Text(
                 'You have no favorite locations',
@@ -49,7 +48,7 @@ class FavoritesScreen extends StatelessWidget {
                         BoxShadow(
                           color: Colors.black.withOpacity(0.1),
                           blurRadius: 5,
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
@@ -57,7 +56,7 @@ class FavoritesScreen extends StatelessWidget {
                       title: Text(
                         location,
                         style: TextStyle(
-                          color: ColorConstants.fontColor,
+                          color: ColorConstants.primaryColor,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -79,13 +78,6 @@ class FavoritesScreen extends StatelessWidget {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        backgroundColor: ColorConstants.primaryColor,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 }

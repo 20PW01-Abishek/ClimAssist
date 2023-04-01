@@ -17,20 +17,17 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          width:MediaQuery.of(context).size.width,
-          height:MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(color: ColorConstants.primaryColor),
             child: SingleChildScrollView(
               child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+                  padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.2, 20, 0),
                   child: Column(
                     children: <Widget>[
-                      textFieldWidget("Enter username", Icons.person_2_rounded,
-                          false, _emailTextController),
+                      textFieldWidget("Enter username", Icons.person_2_rounded, false, _emailTextController),
                       SizedBox(height: 15),
-                      textFieldWidget("Enter Password", Icons.lock, true,
-                          _passwordTextController),
+                      textFieldWidget("Enter Password", Icons.lock, true, _passwordTextController),
                       SizedBox(height: 20),
                       SignInSignUpButton(context, true, () {}),
                       signUpOption()
@@ -46,16 +43,13 @@ class _SignInScreenState extends State<SignInScreen> {
         style: TextStyle(color: Colors.amber),
       ),
       GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignUpScreen()));
-
-        },
-        child:const Text(
-          "Sign up",
-          style:TextStyle(color:Colors.amberAccent,fontWeight: FontWeight.bold)
-        )
-      )
+          onTap: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => SignUpScreen()),
+            // );
+          },
+          child: const Text("Sign up", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)))
     ]);
   }
 }

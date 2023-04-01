@@ -9,11 +9,10 @@ class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SearchBarState createState() => _SearchBarState();
+  SearchBarState createState() => SearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class SearchBarState extends State<SearchBar> {
   final _textController = TextEditingController();
   bool _validate = false;
   String? userSelected;
@@ -22,6 +21,13 @@ class _SearchBarState extends State<SearchBar> {
   void dispose() {
     super.dispose();
     _textController.dispose();
+  }
+
+  bool isStarred = false;
+  void _toggleLike() {
+    setState(() {
+      isStarred = !isStarred;
+    });
   }
 
   @override
@@ -52,10 +58,15 @@ class _SearchBarState extends State<SearchBar> {
                       return Row(
                         children: [
                           IconButton(
-                            icon: Icon(
-                              isFavorite ? Icons.favorite : Icons.favorite_border,
-                              color: isFavorite ? Colors.red : Colors.grey,
-                            ),
+                            icon: isFavorite
+                                ? const Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  )
+                                : const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.grey,
+                                  ),
                             onPressed: () {
                               setState(() {
                                 if (isFavorite) {

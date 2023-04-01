@@ -40,30 +40,10 @@ class WeatherProvider with ChangeNotifier {
     );
   }
 
-  List<String> favoriteLocations = [];
-  // ignore: recursive_getters
-  // List<String> get favoriteLocations => favoriteLocations;
-
-  void addFavoriteLocation(String location) {
-    if (!favoriteLocations.contains(location)) {
-      favoriteLocations.add(location);
-      notifyListeners();
-    }
-    for(int i=0; i<favoriteLocations.length; i++) {
-      print(favoriteLocations[i]);
-    }
-  }
-
   List<String> favorites = [];
 
   void addToFavorites(String location) {
     favorites.add(location);
-    for(int i=0; i<favorites.length; i++) {
-      print(favorites[i]);
-    }
-    for(int i=0; i<favoriteLocations.length; i++) {
-      print(favoriteLocations[i]);
-    }
   }
 
   void removeFromFavorites(String location) {
@@ -74,25 +54,11 @@ class WeatherProvider with ChangeNotifier {
     return favorites.contains(location);
   }
 
-  
-  void removeFavoriteLocation(String location) {
-    if (favoriteLocations.contains(location)) {
-      favoriteLocations.remove(location);
-      notifyListeners();
-    }
-  }
-
-  
-  bool isFavoriteLocation(String location) {
-    return favoriteLocations.contains(location);
-  }
-
-  
   void toggleFavoriteLocation(String location) {
-    if (isFavoriteLocation(location)) {
-      removeFavoriteLocation(location);
+    if (isFavorite(location)) {
+      removeFromFavorites(location);
     } else {
-      addFavoriteLocation(location);
+      addToFavorites(location);
     }
   }
 
