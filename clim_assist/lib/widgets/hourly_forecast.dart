@@ -11,16 +11,17 @@ class HourlyForecast extends StatelessWidget {
     final hours = currentTime.toString();
     return Container(
       height: 175,
-      width: 100,
+      width: 110,
       padding: const EdgeInsets.all(5.0),
       child: Material(
         elevation: 5,
         borderRadius: BorderRadius.circular(15),
         color: ColorConstants.primaryColor,
-        child: Row(
+        child: ListView(
+          scrollDirection: Axis.horizontal,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              padding: const EdgeInsets.only(left: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -38,16 +39,13 @@ class HourlyForecast extends StatelessWidget {
                     '${weather.condition}',
                     50,
                   ),
-                  SizedBox(
-                    width: 80,
-                    child: Text(
-                      "${weather.dailyTemp.toStringAsFixed(1)}°C",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: ColorConstants.fontColor,
-                        fontWeight: FontWeight.w500,
-                      ),
+                  Text(
+                    "${weather.dailyTemp.toStringAsFixed(1)}°C",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: ColorConstants.fontColor,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -86,10 +84,15 @@ class HourlyForecast extends StatelessWidget {
                 ),
                 child: const Text(
                   'View Favorites',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritesScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FavoritesScreen()),
+                  );
                 },
               ),
             ],
@@ -99,8 +102,9 @@ class HourlyForecast extends StatelessWidget {
         Consumer<WeatherProvider>(
           builder: (context, weatherProv, _) {
             return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: weatherProv.hourlyWeather.map((item) => hourlyWidget(item, context)).toList());
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: weatherProv.hourlyWeather.map((item) => hourlyWidget(item, context)).toList(),
+            );
           },
         ),
       ],

@@ -18,7 +18,7 @@ class WeatherProvider with ChangeNotifier {
   bool isLoading = false;
   bool isRequestError = false;
   bool isLocationError = false;
-   Weather? weatherData;
+  Weather? weatherData;
   Future<void> getWeatherData({bool isRefresh = false}) async {
     isLoading = true;
     isRequestError = false;
