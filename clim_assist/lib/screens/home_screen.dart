@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             ListView(
-                              padding:  EdgeInsets.all(10),
+                              padding: EdgeInsets.all(10),
                               children:  [
                                 FadeIn(
                                   curve: Curves.easeIn,

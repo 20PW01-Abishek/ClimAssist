@@ -6,10 +6,10 @@ import '../constants.dart';
 
 class LocationError extends StatefulWidget {
   @override
-  _LocationErrorState createState() => _LocationErrorState();
+  LocationErrorState createState() => LocationErrorState();
 }
 
-class _LocationErrorState extends State<LocationError> {
+class LocationErrorState extends State<LocationError> {
   @override
   Widget build(BuildContext context) {
     Location location = Location();
@@ -22,7 +22,7 @@ class _LocationErrorState extends State<LocationError> {
             color: ColorConstants.primaryColor,
             size: 75,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             'Your Location is Disabled',
             style: TextStyle(
@@ -46,34 +46,31 @@ class _LocationErrorState extends State<LocationError> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor,
-              textStyle: TextStyle(color: Colors.white),
-              padding: EdgeInsets.symmetric(horizontal: 50),
+              textStyle: const TextStyle(color: Colors.white),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
             ),
-            child: Text('Enable Location'),
+            child: const Text('Enable Location'),
             onPressed: () async {
               await location.requestService().then((value) async {
                 if (value) {
-                  await Provider.of<WeatherProvider>(context, listen: false)
-                      .getWeatherData();
-                } else
+                  await Provider.of<WeatherProvider>(context, listen: false).getWeatherData();
+                } else {
                   showDialog(
                     context: context,
                     barrierDismissible: false,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text('Cannot Get Your Location'),
+                        title: const Text('Cannot Get Your Location'),
                         content: SingleChildScrollView(
                           child: ListBody(
-                            children: <Widget>[
-                              Text(
-                                  'This app uses your phone location to get your location accurate weather data'),
+                            children: const <Widget>[
+                              Text('This app uses your phone location to get your location accurate weather data'),
                             ],
                           ),
                         ),
                         actions: <Widget>[
-                          ElevatedButton
-                          (
-                            child: Text('OK'),
+                          ElevatedButton(
+                            child: const Text('OK'),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
@@ -82,6 +79,7 @@ class _LocationErrorState extends State<LocationError> {
                       );
                     },
                   );
+                }
               });
             },
           ),

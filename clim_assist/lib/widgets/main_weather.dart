@@ -1,5 +1,4 @@
 import 'package:clim_assist/provider/weather_provider.dart';
-import 'package:clim_assist/widgets/sun_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -12,14 +11,12 @@ class MainWeather extends StatelessWidget {
     fontWeight: FontWeight.w500,
     fontSize: 20,
   );
+
   final TextStyle _style2 = TextStyle(
     color: ColorConstants.fontColor,
     fontWeight: FontWeight.w400,
-    // color: Colors.grey[700],
     fontSize: 16,
   );
-
-  // MainWeather({super.key});
 
   @override
   Widget build(BuildContext context) {

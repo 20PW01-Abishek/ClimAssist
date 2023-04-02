@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 
 class FadeIn extends StatefulWidget {
@@ -16,7 +15,7 @@ class FadeIn extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FadeInState createState() => _FadeInState();
+  FadeInState createState() => FadeInState();
 }
 
 enum FadeInAction {
@@ -42,7 +41,7 @@ class FadeInController {
   Stream<FadeInAction> get stream => _streamController.stream;
 }
 
-class _FadeInState extends State<FadeIn> with TickerProviderStateMixin {
+class FadeInState extends State<FadeIn> with TickerProviderStateMixin {
   late AnimationController _controller;
   StreamSubscription<FadeInAction>? _listener;
 

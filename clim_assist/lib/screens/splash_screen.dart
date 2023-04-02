@@ -1,10 +1,9 @@
+import 'package:clim_assist/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
 import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  // const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -16,24 +15,31 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(
-      const Duration(seconds: 3),
-    ).then((_) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) =>  HomeScreen(),
-        ),
-      );
-    });
+      const Duration(seconds: 6),
+    ).then(
+      (_) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (_) => HomeScreen(),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/black.jpg'),
-            fit: BoxFit.cover,
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [
+              // Colors.black,
+              // Colors.black,
+              Color(0xFF0078DA),
+              ColorConstants.primaryColor,
+            ],
+            radius: 0.8,
           ),
         ),
         child: Center(
@@ -49,17 +55,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bt5wpygx/loading_data.json'),
-              Lottie.asset(""),
+              Lottie.asset("assets/images/rocket.json"),
               const SizedBox(height: 20),
-              const Text(
-                'Loading...',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
             ],
           ),
         ),

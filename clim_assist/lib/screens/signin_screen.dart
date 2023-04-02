@@ -1,18 +1,15 @@
 import 'package:clim_assist/constants.dart';
-import 'package:clim_assist/screens/signup_screen.dart';
 import 'package:clim_assist/widgets/common_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
-  // const SignInScreen({super.key});
-
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(height: 15),
                       textFieldWidget("Enter Password", Icons.lock, true, _passwordTextController),
                       SizedBox(height: 20),
-                      SignInSignUpButton(context, true, () {}),
+                      signInSignUpButton(context, true, () {}),
                       signUpOption()
                     ],
                   )),

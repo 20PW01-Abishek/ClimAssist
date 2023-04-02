@@ -10,7 +10,6 @@ class HourlyWeather extends StatelessWidget {
   static const routeName = '/hourlyWeather';
   dynamic weather;
 
-  // HourlyWeather({super.key});
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final time = weather.date;
     final hours = DateFormat.Hm().format(time);
@@ -68,9 +67,7 @@ class HourlyWeather extends StatelessWidget {
           width: mediaQuery.size.width,
           child: ListView(
             physics: const BouncingScrollPhysics(),
-            children: weatherData.hourly24Weather
-                .map((item) => hourlyWidget(item, context))
-                .toList(),
+            children: weatherData.hourly24Weather.map((item) => hourlyWidget(item, context)).toList(),
           ),
         ),
       ),

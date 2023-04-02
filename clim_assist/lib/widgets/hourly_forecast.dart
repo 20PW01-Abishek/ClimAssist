@@ -1,14 +1,11 @@
 import 'package:clim_assist/constants.dart';
 import 'package:clim_assist/provider/weather_provider.dart';
 import 'package:clim_assist/screens/favorites_screen.dart';
-import 'package:clim_assist/screens/hourly_weather.dart';
 import 'package:clim_assist/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HourlyForecast extends StatelessWidget {
-  // const HourlyForecast({super.key});
-
   Widget hourlyWidget(dynamic weather, BuildContext context) {
     final currentTime = weather.date.toString();
     final hours = currentTime.toString();
@@ -92,7 +89,7 @@ class HourlyForecast extends StatelessWidget {
                   style: TextStyle(color: Colors.black),
                 ),
                 onPressed: () {
-                 Navigator.push(context,MaterialPageRoute(builder: (context) =>FavoritesScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritesScreen()));
                 },
               ),
             ],

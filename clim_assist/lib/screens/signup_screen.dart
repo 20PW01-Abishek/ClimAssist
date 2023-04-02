@@ -1,26 +1,23 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class SignUpScreen extends StatefulWidget {
-//   const SignUpScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
 
-//   @override
-//   State<SignUpScreen> createState() => _SignUpScreenState();
-// }
-
-// class _SignUpScreenState extends State<SignUpScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       extendBodyBehindAppBar: true,
-//       appBar: AppBar(
-//         backgroundColor:Colors.transparent,
-//         elevation:0,
-//         title:const Text(
-//           "SignUp",
-//           style:TextStyle(fontSize:24,
-//           fontWeight:FontWeight.bold
-//         )
-//       )
-//     )
-//   }
-// }
+class _SignUpScreenState extends State<SignUpScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          "SignUp",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
