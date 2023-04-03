@@ -52,6 +52,8 @@ dependencies:
   geocoding: ^2.0.5 
   intl: ^0.18.0
   csv: ^5.0.1
+  fl_chart: ^0.61.0
+
 
 dev_dependencies:
   flutter_test:

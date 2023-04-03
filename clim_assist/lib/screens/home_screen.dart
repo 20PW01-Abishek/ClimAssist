@@ -6,13 +6,12 @@ import 'package:clim_assist/widgets/main_weather.dart';
 import 'package:clim_assist/widgets/search_bar.dart';
 import 'package:clim_assist/widgets/weather_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
-
-  // const HomeScreen({super.key});
   @override
   // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
@@ -42,7 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _refreshData(BuildContext context) async {
-    await Provider.of<WeatherProvider>(context, listen: false).getWeatherData(isRefresh: true);
+    await Provider.of<WeatherProvider>(context, listen: false)
+        .getWeatherData(isRefresh: true);
   }
 
   @override
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, weatherProv, _) {
             return Column(
               children: [
-               SearchBar(),
+                SearchBar(),
                 Center(
                   child: SmoothPageIndicator(
                     controller: _pageController,
@@ -92,17 +92,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                     duration: const Duration(milliseconds: 250),
                                     child: MainWeather(),
                                   ),
-                                   FadeIn(
+                                  FadeIn(
                                     curve: Curves.easeIn,
                                     duration: Duration(milliseconds: 750),
                                     child: HourlyForecast(),
+                                  ),
+                                  Lottie.network(
+                                    "https://assets2.lottiefiles.com/packages/lf20_dw8rzsix.json",
                                   ),
                                 ],
                               ),
                             ),
                             ListView(
                               padding: EdgeInsets.all(10),
-                              children:  [
+                              children: [
                                 FadeIn(
                                   curve: Curves.easeIn,
                                   duration: Duration(milliseconds: 250),
